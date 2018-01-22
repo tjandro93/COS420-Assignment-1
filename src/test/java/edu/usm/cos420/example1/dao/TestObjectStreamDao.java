@@ -14,8 +14,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import edu.usm.cos420.example1.dao.ObjectStreamDao;
-import edu.usm.cos420.example1.domain.CItem;
+import edu.usm.cos420.assignment1.dao.ObjectStreamDao;
+import edu.usm.cos420.assignment1.domain.CItem;
 
 public class TestObjectStreamDao {
 

@@ -1,4 +1,4 @@
-package edu.usm.cos420.example1.exceptions;
+package edu.usm.cos420.assignment1.exceptions;
 
 /**
  * 

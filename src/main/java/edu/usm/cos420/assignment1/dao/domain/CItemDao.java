@@ -1,4 +1,4 @@
-package edu.usm.cos420.example1.dao.domain;
+package edu.usm.cos420.assignment1.dao.domain;
 
 import java.util.List;
 import java.util.Map;
@@ -6,9 +6,9 @@ import java.util.Map;
 import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 
-import edu.usm.cos420.example1.dao.GenericDao;
-import edu.usm.cos420.example1.dao.JsonDao;
-import edu.usm.cos420.example1.domain.CItem;
+import edu.usm.cos420.assignment1.dao.GenericDao;
+import edu.usm.cos420.assignment1.dao.JsonDao;
+import edu.usm.cos420.assignment1.domain.CItem;
 
 /**
  * 

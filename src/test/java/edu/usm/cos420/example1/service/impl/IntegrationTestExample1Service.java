@@ -14,11 +14,12 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import edu.usm.cos420.example1.dao.GenericDao;
-import edu.usm.cos420.example1.dao.ObjectStreamDao;
-import edu.usm.cos420.example1.dao.domain.CItemDao;
-import edu.usm.cos420.example1.domain.CItem;
-import edu.usm.cos420.example1.service.ExampleService;
+import edu.usm.cos420.assignment1.dao.GenericDao;
+import edu.usm.cos420.assignment1.dao.ObjectStreamDao;
+import edu.usm.cos420.assignment1.dao.domain.CItemDao;
+import edu.usm.cos420.assignment1.domain.CItem;
+import edu.usm.cos420.assignment1.service.ExampleService;
+import edu.usm.cos420.assignment1.service.impl.Example1Service;
 
 public class IntegrationTestExample1Service {
 	GenericDao<Long, CItem> dao;

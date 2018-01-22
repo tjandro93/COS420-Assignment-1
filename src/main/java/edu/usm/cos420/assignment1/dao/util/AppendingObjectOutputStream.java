@@ -1,4 +1,4 @@
-package edu.usm.cos420.example1.dao.util;
+package edu.usm.cos420.assignment1.dao.util;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;

@@ -14,7 +14,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import edu.usm.cos420.example1.domain.CItem;
+import edu.usm.cos420.assignment1.dao.JsonDao;
+import edu.usm.cos420.assignment1.domain.CItem;
 
 import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;

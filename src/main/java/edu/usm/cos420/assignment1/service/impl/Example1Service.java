@@ -1,11 +1,11 @@
-package edu.usm.cos420.example1.service.impl;
+package edu.usm.cos420.assignment1.service.impl;
 
 import java.util.Iterator;
 import java.util.List;
 
-import edu.usm.cos420.example1.dao.domain.CItemDao;
-import edu.usm.cos420.example1.domain.CItem;
-import edu.usm.cos420.example1.service.ExampleService;
+import edu.usm.cos420.assignment1.dao.domain.CItemDao;
+import edu.usm.cos420.assignment1.domain.CItem;
+import edu.usm.cos420.assignment1.service.ExampleService;
 
 /**
  * 

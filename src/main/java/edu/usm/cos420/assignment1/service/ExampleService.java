@@ -1,8 +1,8 @@
-package edu.usm.cos420.example1.service;
+package edu.usm.cos420.assignment1.service;
 
 import java.util.List;
 
-import edu.usm.cos420.example1.domain.CItem;
+import edu.usm.cos420.assignment1.domain.CItem;
 
 /**
  * 

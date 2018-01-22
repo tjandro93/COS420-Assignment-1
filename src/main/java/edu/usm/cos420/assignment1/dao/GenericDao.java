@@ -1,4 +1,4 @@
-package edu.usm.cos420.example1.dao;
+package edu.usm.cos420.assignment1.dao;
 
 import java.io.Serializable;
 import java.util.List;

@@ -1,4 +1,4 @@
-package edu.usm.cos420.example1.dao;
+package edu.usm.cos420.assignment1.dao;
 
 /* 
  *    Data Access Object that uses GSON library (from Google) for 

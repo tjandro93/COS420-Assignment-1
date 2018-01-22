@@ -1,10 +1,10 @@
-package edu.usm.cos420.example1.controller;
+package edu.usm.cos420.assignment1.controller;
 
 import java.util.List;
 
-import edu.usm.cos420.example1.domain.CItem;
-import edu.usm.cos420.example1.service.ExampleService;
-import edu.usm.cos420.example1.view.impl.CItemView;
+import edu.usm.cos420.assignment1.domain.CItem;
+import edu.usm.cos420.assignment1.service.ExampleService;
+import edu.usm.cos420.assignment1.view.impl.CItemView;
 
 /**
  *   A Controller class to execute user's menu choice.

@@ -1,9 +1,9 @@
-package edu.usm.cos420.example1;
+package edu.usm.cos420.assignment1;
 
-import edu.usm.cos420.example1.controller.CItemController;
-import edu.usm.cos420.example1.service.ExampleService;
-import edu.usm.cos420.example1.service.impl.Example1Service;
-import edu.usm.cos420.example1.view.impl.CItemView;
+import edu.usm.cos420.assignment1.controller.CItemController;
+import edu.usm.cos420.assignment1.service.ExampleService;
+import edu.usm.cos420.assignment1.service.impl.Example1Service;
+import edu.usm.cos420.assignment1.view.impl.CItemView;
 
 /**
  * Top level application class that coordinates the calls to view and Controller

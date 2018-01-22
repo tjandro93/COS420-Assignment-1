@@ -1,11 +1,11 @@
-package edu.usm.cos420.example1.view.impl;
+package edu.usm.cos420.assignment1.view.impl;
 
 import java.util.List;
 import java.util.Scanner;
 
-import edu.usm.cos420.example1.domain.CItem;
-import edu.usm.cos420.example1.service.ExampleService;
-import edu.usm.cos420.example1.service.impl.Example1Service;
+import edu.usm.cos420.assignment1.domain.CItem;
+import edu.usm.cos420.assignment1.service.ExampleService;
+import edu.usm.cos420.assignment1.service.impl.Example1Service;
 
 /* 
  * CItemView class 

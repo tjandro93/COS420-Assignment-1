@@ -1,4 +1,4 @@
-package edu.usm.cos420.example1.dao;
+package edu.usm.cos420.assignment1.dao;
 
 import java.io.EOFException;
 import java.io.File;
@@ -14,8 +14,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import edu.usm.cos420.example1.dao.util.AppendingObjectOutputStream;
-import edu.usm.cos420.example1.exceptions.DaoException;
+import edu.usm.cos420.assignment1.dao.util.AppendingObjectOutputStream;
+import edu.usm.cos420.assignment1.exceptions.DaoException;
 
 /**
  * 

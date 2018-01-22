@@ -4,7 +4,7 @@
  * Created on August 28, 2001, 11:46 AM
  */
 
-package edu.usm.cos420.example1.domain;
+package edu.usm.cos420.assignment1.domain;
 
 import java.io.Serializable;
 
