@@ -42,7 +42,7 @@ public class CItemDao
 	 * Support for other DAOs is provided
 	 * @param dao a Data Access Object class that implements GenericDao<Long,CItem> 
 	 */
-	public CItemDao(GenericDao<Long,CItem> dao)
+	public CItemDao(GenericDao<Long, CItem> dao)
 	{
 		cItemDao = dao;
 	}
