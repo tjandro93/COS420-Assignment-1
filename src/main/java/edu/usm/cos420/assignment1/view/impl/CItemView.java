@@ -33,7 +33,7 @@ public class CItemView{
      */
   public CItemView()
   {
-	  in = new Scanner(System.in);  
+	  in = new Scanner(System.in);
   }
   /**
    * This small version of the UI does not need the model or service objects but, in general, 
