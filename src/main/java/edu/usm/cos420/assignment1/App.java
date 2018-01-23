@@ -11,6 +11,7 @@ import edu.usm.cos420.assignment1.view.impl.CItemView;
  */
 public class App
 {
+	//TODO alter App to use MainMenuController
     /**
      * Entry point for application : calls {@link #provideCItemAccess()}
      * @param args  main program arguments, currently not used
