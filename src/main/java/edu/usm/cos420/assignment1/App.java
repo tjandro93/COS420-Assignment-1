@@ -1,9 +1,7 @@
 package edu.usm.cos420.assignment1;
 
-import edu.usm.cos420.assignment1.controller.CItemController;
-import edu.usm.cos420.assignment1.service.ExampleService;
-import edu.usm.cos420.assignment1.service.impl.Example1Service;
-import edu.usm.cos420.assignment1.view.impl.CItemView;
+import edu.usm.cos420.assignment1.controller.MainMenuController;
+import edu.usm.cos420.assignment1.view.impl.MainMenuView;
 
 /**
  * Top level application class that coordinates the calls to view and Controller
@@ -18,9 +16,8 @@ public class App
      */
 	public static void main( String[] args )
     {
-		ExampleService service = new Example1Service();
-		CItemView citemView = new CItemView();
-		CItemController controller = new CItemController(citemView,service);		
-		controller.provideCItemAccess();
+		MainMenuView mainMenuView = new MainMenuView();
+		MainMenuController mainMenuController = new MainMenuController(mainMenuView);		
+		mainMenuController.provideMainMenuAccess();
     }
 }
