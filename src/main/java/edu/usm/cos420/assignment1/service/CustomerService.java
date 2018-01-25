@@ -3,9 +3,7 @@ package edu.usm.cos420.assignment1.service;
 import edu.usm.cos420.assignment1.domain.Customer;
 
 /**
- * 
  * A service interface to define actions to be performed on the list of {@link Customer} entities.
- *
  */
 public interface CustomerService {
 
