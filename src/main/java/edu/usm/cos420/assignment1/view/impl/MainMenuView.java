@@ -2,12 +2,14 @@ package edu.usm.cos420.assignment1.view.impl;
 
 import java.util.Scanner;
 
+import edu.usm.cos420.assignment1.view.MenuView;
+
 /**
  * View class to handle main menu input and output
  * <p>
  * This view is to be attached to {@link edu.usm.cos420.assignment1.controller.MainMenuController}
  */
-public class MainMenuView {
+public class MainMenuView implements MenuView{
 
 	//TODO test MainMenuView
 	/** {@value #NO_CHOICE} : no choice selected by user */
@@ -20,12 +22,24 @@ public class MainMenuView {
 	public static final int ORDER_MENU = 3;
 	/** {@value #EXIT} : exit the main menu (closing the application)*/
 	public static final int EXIT = 4;
+	
+	private Scanner in;
 
 	/**
 	 * Default constructor
+	 * <p>
+	 * Makes this instance use System.in for its input. 
 	 */
 	public MainMenuView(){
-
+		this.in = new Scanner(System.in);
+	}
+	
+	/**
+	 * Constructor which takes a Scanner passed in for its input. 
+	 * @param in the Scanner to be used for input
+	 */
+	public MainMenuView(Scanner in){
+		this.in = in;
 	}
 
 	/**
@@ -52,15 +66,14 @@ public class MainMenuView {
 	 * </ul>
 	 */
 	public int getMenuChoice() {
-		Scanner in = new Scanner(System.in);
+		in = new Scanner(System.in);
 		int choice = NO_CHOICE;
 		while(choice == NO_CHOICE){
-			System.out.print("Enter choice");
+			System.out.print("Enter choice ");
 			System.out.flush();
-			String choiceStr = in.nextLine();
+			String choiceStr = in.next();
 			choice = validateChoice(choiceStr);
 		}
-		in.close();
 		return choice;
 	}
 
@@ -85,5 +98,21 @@ public class MainMenuView {
 			System.out.println(userInput + " is not a valid action");
 		}
 		return choice;
+	}
+	
+	/**
+	 * Getter for the internal Scanner
+	 * @return the Scanner being used
+	 */
+	public Scanner getScanner(){
+		return this.in;
+	}
+	
+	/**
+	 * Setter for the internal Scanner
+	 * @param in the Scanner to be used for input
+	 */
+	public void setScanner(Scanner in){
+		this.in = in;
 	}
 }
