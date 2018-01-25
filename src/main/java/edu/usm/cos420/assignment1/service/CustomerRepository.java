@@ -1,9 +1,11 @@
 package edu.usm.cos420.assignment1.service;
 
+import java.util.List;
+
 import edu.usm.cos420.assignment1.domain.Customer;
 
 /**
- * A service interface to define actions to be performed on the list of {@link Customer} entities.
+ * A repository service interface to define actions to be performed on the list of {@link Customer} entities.
  */
 public interface CustomerRepository {
 
@@ -18,7 +20,7 @@ public interface CustomerRepository {
 	 * @param name the name of the {@code Customer}
 	 * @return the {@code Customer} with the given name or null if none is found
 	 */
-	public Customer findCustomerByName(String name);
+	public List<Customer> findCustomersByName(String name);
 	
 	
 }

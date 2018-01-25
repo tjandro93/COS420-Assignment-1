@@ -13,8 +13,11 @@ import java.io.*;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class JsonDao<IDType, T extends Serializable> implements GenericDao<IDType, T> {
 
@@ -95,7 +98,7 @@ public class JsonDao<IDType, T extends Serializable> implements GenericDao<IDTyp
 		readFileIntoMap();
 		return entityMap.get(key);
 	}
-
+	
 	/**
 	 * List all entities in the persisted collection
 	 *

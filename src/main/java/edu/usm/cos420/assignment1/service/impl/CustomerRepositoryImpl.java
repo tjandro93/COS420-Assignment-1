@@ -1,12 +1,16 @@
 package edu.usm.cos420.assignment1.service.impl;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 import edu.usm.cos420.assignment1.dao.domain.CustomerDao;
 import edu.usm.cos420.assignment1.domain.Customer;
 import edu.usm.cos420.assignment1.service.CustomerRepository;
 /**
  * Implementation of {@link CustomerRepository}
  * <p>
- * Serves as an interface level between dao/domain and the controller/view
+ * Serves as an repository service layer between dao/domain and the controller/view
  */
 public class CustomerRepositoryImpl implements CustomerRepository {
 
@@ -28,18 +32,30 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 	}
 
 	/**
-	 * Add the Customer to 
-	 * @param customer
+	 * Add the Customer to the repository
+	 * @param customer the Customer to be added
 	 */
 	@Override
 	public void addCustomer(Customer customer) {
 		dao.add(customer);
 	}
 
+	/**
+	 * Find a Customer in the repository by name field
+	 * @param name the name of the Customer to be searched for
+	 * @return a List of Customer objects whose name field matches the input name 
+	 */
 	@Override
-	public Customer findCustomerByName(String name) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Customer> findCustomersByName(String name) {
+		Iterator<Customer> itr = dao.list().iterator();
+		Customer currCustomer;
+		List<Customer> foundCustomers = new ArrayList<>();
+		while(itr.hasNext()){
+			if((currCustomer = itr.next()).getName().equals(name)){
+				foundCustomers.add(currCustomer);
+			}
+		}
+		return foundCustomers;
 	}
 
 }

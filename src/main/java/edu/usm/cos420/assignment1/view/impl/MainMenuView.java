@@ -11,9 +11,9 @@ import edu.usm.cos420.assignment1.view.MenuView;
  */
 public class MainMenuView implements MenuView{
 
-	//TODO test MainMenuView
+
 	/** {@value #NO_CHOICE} : no choice selected by user */
-	public static final int NO_CHOICE = 0;
+	public static final int NO_CHOICE = -1;
 	/** {@value #CUSTOMER_MENU} : access customer sub-menu */
 	public static final int CUSTOMER_MENU = 1;
 	/** {@value #INVENTORY_MENU} : access inventory sub-menu*/
@@ -21,8 +21,8 @@ public class MainMenuView implements MenuView{
 	/** {@value #ORDER_MENU} : access order sub-menu*/
 	public static final int ORDER_MENU = 3;
 	/** {@value #EXIT} : exit the main menu (closing the application)*/
-	public static final int EXIT = 4;
-	
+	public static final int EXIT = 0;
+
 	private Scanner in;
 
 	/**
@@ -33,7 +33,7 @@ public class MainMenuView implements MenuView{
 	public MainMenuView(){
 		this.in = new Scanner(System.in);
 	}
-	
+
 	/**
 	 * Constructor which takes a Scanner passed in for its input. 
 	 * @param in the Scanner to be used for input
@@ -63,10 +63,10 @@ public class MainMenuView implements MenuView{
 	 * 	<li>{@value #CUSTOMER_MENU} : Display the customer menu
 	 *	<li>{@value #INVENTORY_MENU} : Display the inventory menu
 	 *	<li>{@value #ORDER_MENU} : Display the order menu
+	 *	<li>{@value #EXIT} : Exit the application
 	 * </ul>
 	 */
 	public int getMenuChoice() {
-		in = new Scanner(System.in);
 		int choice = NO_CHOICE;
 		while(choice == NO_CHOICE){
 			System.out.print("Enter choice ");
@@ -86,6 +86,7 @@ public class MainMenuView implements MenuView{
 	 * 	<li>{@value #CUSTOMER_MENU} : Display the customer menu
 	 *	<li>{@value #INVENTORY_MENU} : Display the inventory menu
 	 *	<li>{@value #ORDER_MENU} : Display the order menu
+	 *	<li>{@value #EXIT} : Exit the application
 	 *  <li>{@value #NO_CHOICE} : returned if {@code userInput} is an invalid choice
 	 * </ul>
 	 */
@@ -97,9 +98,14 @@ public class MainMenuView implements MenuView{
 		catch(NumberFormatException e){
 			System.out.println(userInput + " is not a valid action");
 		}
+		if (choice != NO_CHOICE && choice != CUSTOMER_MENU && choice != INVENTORY_MENU && choice != ORDER_MENU && choice != EXIT){
+			System.out.println(userInput + " is not a valid action");
+
+		}
 		return choice;
+
 	}
-	
+
 	/**
 	 * Getter for the internal Scanner
 	 * @return the Scanner being used
@@ -107,7 +113,7 @@ public class MainMenuView implements MenuView{
 	public Scanner getScanner(){
 		return this.in;
 	}
-	
+
 	/**
 	 * Setter for the internal Scanner
 	 * @param in the Scanner to be used for input

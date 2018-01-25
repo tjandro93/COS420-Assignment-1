@@ -18,6 +18,6 @@ public class App
     {
 		MainMenuView mainMenuView = new MainMenuView();
 		MainMenuController mainMenuController = new MainMenuController(mainMenuView);		
-		mainMenuController.provideMainMenuAccess();
+		mainMenuController.provideMenuAccess();
     }
 }
