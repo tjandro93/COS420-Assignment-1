@@ -1,6 +1,6 @@
 package edu.usm.cos420.assignment1.controller;
 
-import edu.usm.cos420.assignment1.service.CustomerService;
+import edu.usm.cos420.assignment1.service.CustomerRepository;
 import edu.usm.cos420.assignment1.view.impl.MainMenuView;
 
 /**

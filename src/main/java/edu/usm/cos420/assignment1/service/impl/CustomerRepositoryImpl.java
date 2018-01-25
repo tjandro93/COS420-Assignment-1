@@ -1,19 +1,39 @@
 package edu.usm.cos420.assignment1.service.impl;
 
+import edu.usm.cos420.assignment1.dao.domain.CustomerDao;
 import edu.usm.cos420.assignment1.domain.Customer;
-import edu.usm.cos420.assignment1.service.CustomerService;
+import edu.usm.cos420.assignment1.service.CustomerRepository;
 /**
- * Implementation of {@link CustomerService}
+ * Implementation of {@link CustomerRepository}
  * <p>
  * Serves as an interface level between dao/domain and the controller/view
  */
-public class CustomerServiceImpl implements CustomerService {
+public class CustomerRepositoryImpl implements CustomerRepository {
 
-	//TODO Implement CustomerServiceImpl
+	private CustomerDao dao;
+
+	/**
+	 * Default constructor creates new CustomerDao object
+	 */
+	public CustomerRepositoryImpl(){
+		this.dao = new CustomerDao();
+	}
+
+	/**
+	 * Constructor which takes a provided CustomerDao instance
+	 * @param dao the CustomerDao to use
+	 */
+	public CustomerRepositoryImpl(CustomerDao dao){
+		this.dao = dao;
+	}
+
+	/**
+	 * Add the Customer to 
+	 * @param customer
+	 */
 	@Override
 	public void addCustomer(Customer customer) {
-		// TODO Auto-generated method stub
-
+		dao.add(customer);
 	}
 
 	@Override
