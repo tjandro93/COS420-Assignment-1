@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import edu.usm.cos420.assignment1.service.CustomerRepository;
 import edu.usm.cos420.assignment1.service.impl.CustomerRepositoryImpl;
+import edu.usm.cos420.assignment1.util.Input;
 import edu.usm.cos420.assignment1.view.MenuView;
 
 public class CustomerMenuView implements MenuView {
@@ -73,7 +74,7 @@ public class CustomerMenuView implements MenuView {
 		while( choice == NO_CHOICE){
 			System.out.print("Enter choice ");
 			System.out.flush();
-			String choiceStr = in.nextLine();
+			String choiceStr = Input.readLine();
 			choice = validateChoice(choiceStr);
 		}
 		return choice;
