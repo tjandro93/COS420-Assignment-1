@@ -1,10 +1,9 @@
 package edu.usm.cos420.assignment1.controller;
 
 import edu.usm.cos420.assignment1.view.impl.CustomerMenuView;
-
-import java.util.Scanner;
-
+import edu.usm.cos420.assignment1.domain.Customer;
 import edu.usm.cos420.assignment1.service.CustomerRepository;
+import edu.usm.cos420.assignment1.util.Input;
 
 /**
  * A Controller class to execute user's choice for the Customer menu
@@ -51,7 +50,7 @@ public class CustomerMenuController implements MenuController{
 	public void executeChoice(int choice) {
 		switch(choice){
 		case CustomerMenuView.ADD_CUSTOMER:
-			System.out.println("Add customer placeholder");
+			addCustomer();
 			break;
 		case CustomerMenuView.FIND_CUSTOMER:
 			System.out.println("Find customer placeholder");
@@ -62,6 +61,39 @@ public class CustomerMenuController implements MenuController{
 		default:
 			break;
 		}
+	}
+	
+	public void addCustomer(){
+		System.out.println();
+		System.out.println("Add customer placeholder wip");
+		view.displayIdPrompt();
+		int custId = view.getNewId();
+		if(custId != CustomerMenuView.EXIT){
+			view.displayNamePrompt();
+			String custName = view.getNewName();
+			if(!custName.equals(String.valueOf(CustomerMenuView.EXIT))){
+				view.displayAddressPrompt();
+				String custAddr = view.getNewAddress();
+				if(!custAddr.equals(String.valueOf(CustomerMenuView.EXIT))){
+					Customer newCust = new Customer(custId, custAddr, custName);
+					System.out.println("You entered\t" + newCust);
+					if(Input.getConfirmation()){
+						repository.addCustomer(newCust);
+						System.out.println("Customer saved");
+					}
+					else{
+						System.out.println("Add customer aborted");
+					}
+				}
+				else{
+					System.out.println("Add customer aborted");
+				}
+			}
+		}
+		else{
+			System.out.println("Add customer aborted");
+		}
+		
 	}
 
 

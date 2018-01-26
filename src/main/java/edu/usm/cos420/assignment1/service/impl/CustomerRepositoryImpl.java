@@ -58,4 +58,13 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 		return foundCustomers;
 	}
 
+	/**
+	 * Find a specific {@code Customer} from the system
+	 * @param idNum the ID of the {@code Customer}
+	 * @return the {@code Customer} with the given ID or null if none is found
+	 */
+	@Override
+	public Customer findCustomersById(int idNum) {
+		return dao.find((long) idNum);
+	}
 }

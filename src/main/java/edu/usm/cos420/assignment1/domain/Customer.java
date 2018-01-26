@@ -33,6 +33,10 @@ public class Customer implements Serializable{
 			this.address = address;
 			this.name = name;
 		}
+		
+		public String toString(){
+			return String.format("ID: %6d, Name: %s, Address: %s", this.id, this.name, this.address);
+		}
 
 		/**
 		 * Get the customer's ID

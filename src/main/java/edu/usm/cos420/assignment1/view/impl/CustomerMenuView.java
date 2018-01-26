@@ -105,4 +105,105 @@ public class CustomerMenuView implements MenuView {
 		}
 		return choice;
 	}
+
+	/**
+	 * Prompt user to enter a Customer ID
+	 */
+	public void displayIdPrompt(){
+		System.out.println("Enter 6-digit Customer ID or 0 to abort");
+	}
+
+	/**
+	 * Get user input for a Customer ID
+	 * @return either a valid Customer ID 
+	 * or {@code #EXIT} if the user wishes to abort the operation
+	 */
+	public int getNewId(){
+		int idInt;
+		String idStr = Input.readLine();
+		while((idInt = validateNewId(idStr)) == NO_CHOICE){
+			idStr = Input.readLine();
+		}
+		return idInt;
+	}
+
+	/**
+	 * Validate the input Customer ID to ensure it is 6 Digits
+	 * and is not already being used
+	 * @param idStr the input from the user
+	 * @return a valid ID number
+	 *  or {@code #EXIT} if the user wishes to abort the operation
+	 */
+	private int validateNewId(String idStr){
+		int idNum = NO_CHOICE;
+		if(idStr.equals("0")){
+			return EXIT;
+		}
+		if (idStr.length() == 6){
+			try{
+				idNum = Integer.parseInt(idStr);
+			}
+			catch (NumberFormatException e){
+				System.out.println(idStr + " is not a valid ID");
+			}
+		}
+		else{
+			System.out.println(idStr + " is not a valid ID");
+			return NO_CHOICE;
+		}
+		if(repository.findCustomersById(idNum) != null){
+			System.out.println("A Customer with ID " + idNum + " is already in the system");
+			return NO_CHOICE;
+		}
+		else{
+
+			return idNum;
+		}
+	}
+
+	/**
+	 * Prompt user to enter a Customer name
+	 */
+	public void displayNamePrompt(){
+		System.out.println("Enter a name for the Customer or 0 to abort");
+	}
+
+	/**
+	 * Get user input for a Customer name. Will not return until a nonempty string is input
+	 * @return a valid Customer name
+	 */
+	public String getNewName(){
+		String custName = null;
+		while(custName == null){
+			custName = Input.readLine();
+			if(custName.length() == 0){
+				System.out.println("You must provide a name");
+				custName = null;
+			}
+		}
+		return custName;
+	}
+
+	/**
+	 * Prompt user to enter a Customer's address
+	 */
+	public void displayAddressPrompt(){
+		System.out.println("Enter the customer's address or 0 to abort");
+	}
+
+	/**
+	 * Get user input for a Customer address. Will not return until a nonempty string is input
+	 * @return a valid Customer address
+	 */
+	public String getNewAddress(){
+		String custAddr = null;
+		while(custAddr == null){
+			custAddr = Input.readLine();
+			if(custAddr.length() == 0){
+				System.out.println("You must provide an address");
+				custAddr = null;
+			}
+		}
+		return custAddr;
+	}
 }

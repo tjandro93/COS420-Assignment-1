@@ -22,5 +22,12 @@ public interface CustomerRepository {
 	 */
 	public List<Customer> findCustomersByName(String name);
 	
+	/**
+	 * Find a specific {@code Customer} from the system
+	 * @param idNum the ID of the {@code Customer}
+	 * @return the {@code Customer} with the given ID or null if none is found
+	 */
+	public Customer findCustomersById(int idNum);
+	
 	
 }
