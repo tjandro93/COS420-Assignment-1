@@ -12,7 +12,6 @@ import edu.usm.cos420.assignment1.view.MenuView;
  */
 public class MainMenuView implements MenuView{
 
-
 	/** {@value #NO_CHOICE} : no choice selected by user */
 	public static final int NO_CHOICE = -1;
 	/** {@value #CUSTOMER_MENU} : access customer sub-menu */
@@ -24,24 +23,10 @@ public class MainMenuView implements MenuView{
 	/** {@value #EXIT} : exit the main menu (closing the application)*/
 	public static final int EXIT = 0;
 
-	private Scanner in;
-
 	/**
 	 * Default constructor
-	 * <p>
-	 * Makes this instance use System.in for its input. 
 	 */
-	public MainMenuView(){
-		this.in = new Scanner(System.in);
-	}
-
-	/**
-	 * Constructor which takes a Scanner passed in for its input. 
-	 * @param in the Scanner to be used for input
-	 */
-	public MainMenuView(Scanner in){
-		this.in = in;
-	}
+	public MainMenuView(){	}
 
 	/**
 	 * Display menu options to user
@@ -105,21 +90,5 @@ public class MainMenuView implements MenuView{
 		}
 		return choice;
 
-	}
-
-	/**
-	 * Getter for the internal Scanner
-	 * @return the Scanner being used
-	 */
-	public Scanner getScanner(){
-		return this.in;
-	}
-
-	/**
-	 * Setter for the internal Scanner
-	 * @param in the Scanner to be used for input
-	 */
-	public void setScanner(Scanner in){
-		this.in = in;
 	}
 }

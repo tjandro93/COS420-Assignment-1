@@ -13,7 +13,6 @@ public class CustomerMenuController implements MenuController{
 
 	private CustomerMenuView view;
 	private CustomerRepository repository;
-	private Scanner in;
 	
 	/**
 	 * Constructor: parameters provided to link View and Repository references
@@ -22,16 +21,17 @@ public class CustomerMenuController implements MenuController{
 	 */
 	public CustomerMenuController(CustomerMenuView view, CustomerRepository repository){
 		this.view = view;
-		this.in = view.getScanner();
 		this.repository = repository;
 	}
 
-	public CustomerMenuController(CustomerRepository repository, Scanner in){
-		this.in = in;
+	public CustomerMenuController(CustomerRepository repository){
 		this.repository = repository;
-		this.view = new CustomerMenuView(in, repository);
+		this.view = new CustomerMenuView(repository);
 	}
 	
+	/**
+	 * Display main menu, get user input, and branch on input
+	 */
 	@Override
 	public void provideMenuAccess() {
 		int choice = CustomerMenuView.NO_CHOICE;
@@ -43,6 +43,10 @@ public class CustomerMenuController implements MenuController{
 
 	}
 
+	/**
+	 * Based on {@code choice}, do the desired Customer action
+	 * @param choice the constant from {@code CustomerMenuView} for the desired action
+	 */
 	@Override
 	public void executeChoice(int choice) {
 		switch(choice){

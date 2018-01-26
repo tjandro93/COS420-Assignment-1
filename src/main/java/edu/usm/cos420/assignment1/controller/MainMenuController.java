@@ -13,34 +13,34 @@ import edu.usm.cos420.assignment1.view.impl.MainMenuView;
  */
 public class MainMenuController implements MenuController {
 
-	private Scanner in;
 	private CustomerRepository customerRepository;
-	
+
 	private MainMenuView mainMenuView;
 	private CustomerMenuController customerMenuController;
-	
+
 	/**
 	 * Default Constructor, initializes all required fields appropriately 
 	 */
 	public MainMenuController(){
-		this.in = new Scanner(System.in);
-		this.mainMenuView = new MainMenuView(in);
+		this.mainMenuView = new MainMenuView();
 		this.customerRepository = new CustomerRepositoryImpl();
-		this.customerMenuController = new CustomerMenuController(customerRepository, in);
+		this.customerMenuController = new CustomerMenuController(customerRepository);
 	}
-	
+
 	/**
 	 * Constructor: takes a {@code view.impl.MainMenuView} to provide menu UI
 	 * @param mainMenuView view for menu UI
 	 */
 	public MainMenuController(MainMenuView mainMenuView){
 		this.mainMenuView = mainMenuView;
-		this.in = mainMenuView.getScanner();
 		this.customerRepository = new CustomerRepositoryImpl();
-		this.customerMenuController = new CustomerMenuController(customerRepository, in);
+		this.customerMenuController = new CustomerMenuController(customerRepository);
 	}
 
-
+	/**
+	 * Display main menu, get user input, and branch on input
+	 */
+	@Override
 	public void provideMenuAccess(){
 		int choice = MainMenuView.NO_CHOICE;
 		while(choice != MainMenuView.EXIT){
@@ -50,7 +50,11 @@ public class MainMenuController implements MenuController {
 		}
 	}
 
-
+	/**
+	 * Based on {@code choice}, go to the desired sub-menu
+	 * @param choice the constant from {@code MainMenuView} for the desired sub-menu
+	 */
+	@Override
 	public void executeChoice(int choice){
 		switch(choice){
 		case MainMenuView.CUSTOMER_MENU:

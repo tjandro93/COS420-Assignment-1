@@ -7,6 +7,9 @@ import edu.usm.cos420.assignment1.service.impl.CustomerRepositoryImpl;
 import edu.usm.cos420.assignment1.util.Input;
 import edu.usm.cos420.assignment1.view.MenuView;
 
+/**
+ * View class to display and receive customer menu choices 
+ */
 public class CustomerMenuView implements MenuView {
 
 	/** {@value #NO_CHOICE } : no choice selected by user*/
@@ -20,26 +23,22 @@ public class CustomerMenuView implements MenuView {
 	/** {@value #EXIT } : exit the customer menu (returning to the main menu)*/
 	public static final int EXIT = 0;
 
-	private Scanner in;
 	private CustomerRepository repository;
 
 	/**
 	 * Default constructor
 	 * <p>
-	 * Makes this instance use System.in for its input and create a new instance of {@code service.CustomerRepository} 
+	 * Makes this instance create a new instance of {@code service.CustomerRepository} 
 	 */
 	public CustomerMenuView(){
-		this.in = new Scanner(System.in);
 		this.repository = new CustomerRepositoryImpl();
 	}
 
 	/**
-	 * Constructor which takes a Scanner passed in for its input. 
-	 * @param in the Scanner to be used for input
+	 * Constructor which takes a CustomerRepository instance 
 	 * @param repository the CustomerRepository to use 
 	 */
-	public CustomerMenuView(Scanner in, CustomerRepository repository){
-		this.in = in;
+	public CustomerMenuView(CustomerRepository repository){
 		this.repository = repository;
 	}
 
@@ -106,13 +105,4 @@ public class CustomerMenuView implements MenuView {
 		}
 		return choice;
 	}
-
-	/**
-	 * Getter for internal Scanner
-	 * @return the Scanner attached to this view
-	 */
-	public Scanner getScanner() {
-		return this.in;
-	}
-
 }
