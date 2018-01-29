@@ -1,9 +1,10 @@
-package edu.usm.cos420.assignment1.controller;
+package edu.usm.cos420.assignment1.controller.impl;
 
 import edu.usm.cos420.assignment1.view.impl.CustomerMenuView;
 
 import java.util.List;
 
+import edu.usm.cos420.assignment1.controller.MenuController;
 import edu.usm.cos420.assignment1.domain.Customer;
 import edu.usm.cos420.assignment1.service.CustomerRepository;
 import edu.usm.cos420.assignment1.util.Input;

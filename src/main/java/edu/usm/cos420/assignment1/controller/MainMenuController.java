@@ -2,6 +2,7 @@ package edu.usm.cos420.assignment1.controller;
 
 import java.util.Scanner;
 
+import edu.usm.cos420.assignment1.controller.impl.CustomerMenuController;
 import edu.usm.cos420.assignment1.service.CustomerRepository;
 import edu.usm.cos420.assignment1.service.impl.CustomerRepositoryImpl;
 import edu.usm.cos420.assignment1.view.impl.MainMenuView;
