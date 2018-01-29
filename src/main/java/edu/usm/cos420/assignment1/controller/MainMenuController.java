@@ -3,6 +3,7 @@ package edu.usm.cos420.assignment1.controller;
 import java.util.Scanner;
 
 import edu.usm.cos420.assignment1.controller.impl.CustomerMenuController;
+import edu.usm.cos420.assignment1.controller.impl.InventoryMenuController;
 import edu.usm.cos420.assignment1.service.CustomerRepository;
 import edu.usm.cos420.assignment1.service.impl.CustomerRepositoryImpl;
 import edu.usm.cos420.assignment1.view.impl.MainMenuView;
@@ -18,6 +19,7 @@ public class MainMenuController implements MenuController {
 
 	private MainMenuView mainMenuView;
 	private CustomerMenuController customerMenuController;
+	private InventoryMenuController inventoryMenuController;
 
 	/**
 	 * Default Constructor, initializes all required fields appropriately 
@@ -26,6 +28,7 @@ public class MainMenuController implements MenuController {
 		this.mainMenuView = new MainMenuView();
 		this.customerRepository = new CustomerRepositoryImpl();
 		this.customerMenuController = new CustomerMenuController(customerRepository);
+		this.inventoryMenuController = new InventoryMenuController();
 	}
 
 	/**
@@ -36,6 +39,7 @@ public class MainMenuController implements MenuController {
 		this.mainMenuView = mainMenuView;
 		this.customerRepository = new CustomerRepositoryImpl();
 		this.customerMenuController = new CustomerMenuController(customerRepository);
+		this.inventoryMenuController = new InventoryMenuController();
 	}
 
 	/**
@@ -62,7 +66,7 @@ public class MainMenuController implements MenuController {
 			customerMenuController.provideMenuAccess();
 			break;
 		case MainMenuView.INVENTORY_MENU:
-			System.out.println("Inventory Menu Placeholder");
+			inventoryMenuController.provideMenuAccess();
 			break;
 		case MainMenuView.ORDER_MENU:
 			System.out.println("Order Menu PLaceholder");

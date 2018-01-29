@@ -50,7 +50,7 @@ public class CustomerMenuView implements MenuView {
 	@Override
 	public void displayMenu() {
 		System.out.println();
-		System.out.println("Enter the number denoting to action desired");
+		System.out.println("Enter the number denoting the action desired");
 		System.out.println("Add new Customer.............." + ADD_CUSTOMER);
 		System.out.println("Look up Customer.............." + FIND_CUSTOMER);
 		System.out.println("List all Customers............" + LIST_CUSTOMERS);
@@ -101,7 +101,7 @@ public class CustomerMenuView implements MenuView {
 		catch(NumberFormatException e){
 			System.out.println(input + " is not a valid action");
 		}
-		if (choice != ADD_CUSTOMER && choice != FIND_CUSTOMER && choice != LIST_CUSTOMERS && choice != EXIT && choice != NO_CHOICE){
+		if (choice != ADD_CUSTOMER && choice != FIND_CUSTOMER && choice != LIST_CUSTOMERS && choice != EXIT){
 			System.out.println(input + " is not a valid action");
 
 		}

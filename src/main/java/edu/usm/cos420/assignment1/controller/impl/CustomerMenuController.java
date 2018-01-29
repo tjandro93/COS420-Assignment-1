@@ -27,6 +27,10 @@ public class CustomerMenuController implements MenuController{
 		this.repository = repository;
 	}
 
+	/**
+	 * Constructor: uses provided CustomerRepository, creates a new CustomerMenuView
+	 * @param repository
+	 */
 	public CustomerMenuController(CustomerRepository repository){
 		this.repository = repository;
 		this.view = new CustomerMenuView(repository);
@@ -81,7 +85,7 @@ public class CustomerMenuController implements MenuController{
 				view.displayAddressPrompt();
 				String custAddr = view.getNewAddress();
 				if(!custAddr.equals(String.valueOf(CustomerMenuView.EXIT))){
-					Customer newCust = new Customer(custId, custAddr, custName);
+					Customer newCust = new Customer(custId, custName, custAddr);
 					System.out.println("You entered\t" + newCust);
 					if(Input.getConfirmation()){
 						repository.addCustomer(newCust);

@@ -17,8 +17,8 @@ public class Customer implements Serializable{
 		private static final long serialVersionUID = -8605464037542649412L;
 		
 		private long id;
-		private String address;
 		private String name;
+		private String address;
 		
 		/**
 		 * Parameterized constructor
@@ -28,7 +28,7 @@ public class Customer implements Serializable{
 		 * @param address the customer's address
 		 * @param name the customer's name
 		 */
-		public Customer(int id, String address, String name) {
+		public Customer(int id, String name, String address) {
 			this.id = id;
 			this.address = address;
 			this.name = name;

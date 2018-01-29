@@ -84,7 +84,7 @@ public class MainMenuView implements MenuView{
 		catch(NumberFormatException e){
 			System.out.println(userInput + " is not a valid action");
 		}
-		if (choice != NO_CHOICE && choice != CUSTOMER_MENU && choice != INVENTORY_MENU && choice != ORDER_MENU && choice != EXIT){
+		if (choice != CUSTOMER_MENU && choice != INVENTORY_MENU && choice != ORDER_MENU && choice != EXIT){
 			System.out.println(userInput + " is not a valid action");
 
 		}
