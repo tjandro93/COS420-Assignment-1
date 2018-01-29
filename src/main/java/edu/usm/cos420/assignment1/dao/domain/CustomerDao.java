@@ -39,7 +39,7 @@ public class CustomerDao {
 	}
 	
 	/**
-	 * Allows for a GenericDao of the correct type to be specifiedx
+	 * Allows for a GenericDao of the correct type to be specified
 	 * @param dao a Data Access Object that implements GenericDao<Long, Customer>
 	 */
 	public CustomerDao(GenericDao<Long, Customer> dao){
@@ -76,9 +76,9 @@ public class CustomerDao {
 	}
 	
 	/**
-	 * Find a CItem in the DAO repository
-	 * @param id of the CItem object to locate
-	 * @return the CItem with id field equal to key
+	 * Find a Customer in the DAO repository
+	 * @param id of the Customer object to locate
+	 * @return the Customer with id field equal to key
 	 */
 	public Customer find(Long key)
 	{
@@ -86,8 +86,8 @@ public class CustomerDao {
 	}
     
 	/**
-	 * Generate a list of CItems in the DAO repository
-	 * @return List of CItems 
+	 * Generate a list of Customers in the DAO repository
+	 * @return List of Customer 
 	 */
 
 	public List<Customer> list() {

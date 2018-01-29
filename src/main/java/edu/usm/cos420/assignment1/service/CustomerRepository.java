@@ -5,7 +5,7 @@ import java.util.List;
 import edu.usm.cos420.assignment1.domain.Customer;
 
 /**
- * A repository service interface to define actions to be performed on the list of {@link Customer} entities.
+ * A repository service interface to define actions to be performed on the collection of {@link Customer} entities.
  */
 public interface CustomerRepository {
 

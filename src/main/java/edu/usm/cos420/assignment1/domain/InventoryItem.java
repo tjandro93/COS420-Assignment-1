@@ -1,5 +1,7 @@
 package edu.usm.cos420.assignment1.domain;
 
+import java.io.Serializable;
+
 /**
  * A domain class to represent an item in the shop's inventory
  * <p>
@@ -11,7 +13,7 @@ package edu.usm.cos420.assignment1.domain;
  * <li>Quantity, an integer counting the number of the item in stock</li>
  * </ul>
  */
-public class InventoryItem {
+public class InventoryItem implements Serializable{
 	
 	private int id;
 	private String name;
