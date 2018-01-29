@@ -133,8 +133,9 @@ public class CustomerMenuView implements MenuView {
 	 * Validate the input Customer ID to ensure it is 6 Digits
 	 * and is not already being used
 	 * @param idStr the input from the user
-	 * @return a valid ID number
-	 *  or {@code #EXIT} if the user wishes to abort the operation
+	 * @return a valid ID number,
+	 *  {@code #EXIT} if the user wishes to abort the operation,
+	 *  or {@code #NO_CHOICE} if the input is invalid
 	 */
 	private int validateNewId(String idStr){
 		int idNum = NO_CHOICE;
@@ -214,8 +215,16 @@ public class CustomerMenuView implements MenuView {
 	 * @param customers the list of Customers to display
 	 */
 	public void displayAllCustomers(List<Customer> customers){
+		System.out.println(customers.size() + " customers:");
 		for(Customer c : customers){
 			System.out.println(c.toString());
 		}
+	}
+
+	/**
+	 * Display abort message for adding Customers
+	 */
+	public void abortAdd() {
+		System.out.println("Add customer aborted");
 	}
 }

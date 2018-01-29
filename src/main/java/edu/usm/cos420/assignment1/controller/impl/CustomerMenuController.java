@@ -29,7 +29,7 @@ public class CustomerMenuController implements MenuController{
 
 	/**
 	 * Constructor: uses provided CustomerRepository, creates a new CustomerMenuView
-	 * @param repository
+	 * @param repository to use
 	 */
 	public CustomerMenuController(CustomerRepository repository){
 		this.repository = repository;
@@ -92,21 +92,24 @@ public class CustomerMenuController implements MenuController{
 						System.out.println("Customer saved");
 					}
 					else{
-						System.out.println("Add customer aborted");
+						view.abortAdd();
 					}
 				}
 				else{
-					System.out.println("Add customer aborted");
+					view.abortAdd();
 				}
 			}
 		}
 		else{
-			System.out.println("Add customer aborted");
+			view.abortAdd();
 		}
 		
 	}
 
-	public void listCustomers(){
+	/**
+	 * List all Customers in the System
+	 */
+	private void listCustomers(){
 		System.out.println();
 		List<Customer> allCustomers = repository.getAll();
 		view.displayAllCustomers(allCustomers);
