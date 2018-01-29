@@ -1,6 +1,9 @@
 package edu.usm.cos420.assignment1.controller;
 
 import edu.usm.cos420.assignment1.view.impl.CustomerMenuView;
+
+import java.util.List;
+
 import edu.usm.cos420.assignment1.domain.Customer;
 import edu.usm.cos420.assignment1.service.CustomerRepository;
 import edu.usm.cos420.assignment1.util.Input;
@@ -56,16 +59,18 @@ public class CustomerMenuController implements MenuController{
 			System.out.println("Find customer placeholder");
 			break;
 		case CustomerMenuView.LIST_CUSTOMERS:
-			System.out.println("List customer placeholder");
+			listCustomers();
 			break;
 		default:
 			break;
 		}
 	}
 	
+	/**
+	 * Add a customer to the system 
+	 */
 	public void addCustomer(){
 		System.out.println();
-		System.out.println("Add customer placeholder wip");
 		view.displayIdPrompt();
 		int custId = view.getNewId();
 		if(custId != CustomerMenuView.EXIT){
@@ -96,5 +101,10 @@ public class CustomerMenuController implements MenuController{
 		
 	}
 
+	public void listCustomers(){
+		System.out.println();
+		List<Customer> allCustomers = repository.getAll();
+		view.displayAllCustomers(allCustomers);
+	}
 
 }

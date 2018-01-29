@@ -67,4 +67,12 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 	public Customer findCustomersById(int idNum) {
 		return dao.find((long) idNum);
 	}
+	
+	/**
+	 * Get all the Customer's currently in the system
+	 * @return list of all Customer's in system
+	 */
+	public List<Customer> getAll(){
+		return dao.list();
+	}
 }

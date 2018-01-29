@@ -1,7 +1,9 @@
 package edu.usm.cos420.assignment1.view.impl;
 
+import java.util.List;
 import java.util.Scanner;
 
+import edu.usm.cos420.assignment1.domain.Customer;
 import edu.usm.cos420.assignment1.service.CustomerRepository;
 import edu.usm.cos420.assignment1.service.impl.CustomerRepositoryImpl;
 import edu.usm.cos420.assignment1.util.Input;
@@ -205,5 +207,15 @@ public class CustomerMenuView implements MenuView {
 			}
 		}
 		return custAddr;
+	}
+	
+	/**
+	 * Display a list Customers
+	 * @param customers the list of Customers to display
+	 */
+	public void displayAllCustomers(List<Customer> customers){
+		for(Customer c : customers){
+			System.out.println(c.toString());
+		}
 	}
 }

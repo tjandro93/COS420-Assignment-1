@@ -29,5 +29,9 @@ public interface CustomerRepository {
 	 */
 	public Customer findCustomersById(int idNum);
 	
-	
+	/**
+	 * Get all the Customer's currently in the system
+	 * @return list of all Customer's in system
+	 */
+	public List<Customer> getAll();
 }
