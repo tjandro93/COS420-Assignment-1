@@ -14,7 +14,9 @@ import java.io.Serializable;
  * </ul>
  */
 public class InventoryItem implements Serializable{
-	
+
+	private static final long serialVersionUID = 3218115236366936L;
+
 	private int id;
 	private String name;
 	private String description;

@@ -49,7 +49,6 @@ public class Input {
 	 * Prompt user for confirmation
 	 */
 	public static boolean getConfirmation(){
-		boolean confirmed = false;
 		System.out.println("Enter Y to confirm");
 		String input = Input.readLine();
 		return input.equalsIgnoreCase("Y");

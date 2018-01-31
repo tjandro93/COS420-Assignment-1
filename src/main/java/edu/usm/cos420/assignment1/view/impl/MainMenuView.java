@@ -1,7 +1,5 @@
 package edu.usm.cos420.assignment1.view.impl;
 
-import java.util.Scanner;
-
 import edu.usm.cos420.assignment1.util.Input;
 import edu.usm.cos420.assignment1.view.MenuView;
 

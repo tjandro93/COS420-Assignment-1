@@ -1,7 +1,5 @@
 package edu.usm.cos420.assignment1.controller;
 
-import java.util.Scanner;
-
 import edu.usm.cos420.assignment1.controller.impl.CustomerMenuController;
 import edu.usm.cos420.assignment1.controller.impl.InventoryMenuController;
 import edu.usm.cos420.assignment1.service.CustomerRepository;
