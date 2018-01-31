@@ -6,9 +6,9 @@ import edu.usm.cos420.assignment1.view.MenuView;
 /**
  * View class to handle main menu input and output
  * <p>
- * This view is to be attached to {@link edu.usm.cos420.assignment1.controller.impl.MainMenuController}
+ * This view is to be attached to {@link edu.usm.cos420.assignment1.controller.impl.AppMenuController}
  */
-public class MainMenuView implements MenuView{
+public class AppMenuView implements MenuView{
 
 	/** {@value #NO_CHOICE} : no choice selected by user */
 	public static final int NO_CHOICE = -1;
@@ -24,12 +24,12 @@ public class MainMenuView implements MenuView{
 	/**
 	 * Default constructor
 	 */
-	public MainMenuView(){	}
+	public AppMenuView(){	}
 
 	/**
 	 * Display menu options to user
 	 */
-	public void displayMenu() {
+	public void displayMainMenu() {
 		System.out.println();
 		System.out.println("Enter the number denoting the action desired");
 		System.out.println("Customer Menu................." + CUSTOMER_MENU);
@@ -50,7 +50,7 @@ public class MainMenuView implements MenuView{
 	 *	<li>{@value #EXIT} : Exit the application
 	 * </ul>
 	 */
-	public int getMenuChoice() {
+	public int getMainMenuChoice() {
 		int choice = NO_CHOICE;
 		while(choice == NO_CHOICE){
 			System.out.print("Enter choice ");

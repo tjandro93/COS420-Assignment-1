@@ -51,8 +51,8 @@ public class InventoryMenuController implements MenuController{
 	public void provideMenuAccess() {
 		int choice = InventoryMenuView.NO_CHOICE;
 		while(choice != InventoryMenuView.EXIT){
-			view.displayMenu();
-			choice = view.getMenuChoice();
+			view.displayMainMenu();
+			choice = view.getMainMenuChoice();
 			executeChoice(choice);
 		}
 
@@ -70,6 +70,9 @@ public class InventoryMenuController implements MenuController{
 			break;
 		case InventoryMenuView.LIST_ITEMS:
 			listItems();
+			break;
+		case InventoryMenuView.EDIT_ITEM:
+			editItem();
 			break;
 		default:
 			break;
@@ -123,6 +126,149 @@ public class InventoryMenuController implements MenuController{
 		List<InventoryItem> allItems = repository.getAll();
 		System.out.println();
 		view.displayAllItems(allItems);
+	}
+
+	/**
+	 * Edit an existing InventoryItem in the system
+	 */
+	private void editItem() {
+		System.out.println();
+		InventoryItem item = null;
+		int itemId = view.getIdInput(false);
+		if(itemId != InventoryMenuView.EXIT){
+			while(itemId != InventoryMenuView.EXIT && 
+					(item = repository.findItemById(itemId)) == null){
+				view.itemNotFound(itemId);
+				itemId = view.getIdInput(false);
+			}
+			if(itemId == InventoryMenuView.EXIT){
+				view.abortEdit(null);
+			}
+			else{
+				int choice = InventoryMenuView.NO_CHOICE;
+				while(choice != InventoryMenuView.EXIT){
+					System.out.println();
+					view.displayItem(item);
+					view.displayEditMenu();
+					choice = view.getEditMenuChoice();
+					switch(choice){
+					case InventoryMenuView.EDIT_ID:
+						item = editId(item);
+						break;
+					case InventoryMenuView.EDIT_NAME:
+						item = editName(item);
+						break;
+					case InventoryMenuView.EDIT_QUANTITY:
+						item = editQuantity(item);
+						break;
+					case InventoryMenuView.EDIT_INFO:
+						item = editInfo(item);
+						break;
+					default:
+						break;
+					}
+				}
+			}
+		}
+		else{
+			view.abortEdit(null);
+		}
+	}
+
+	/**
+	 * Handle InventoryMenuView I/O to change an InventoryItem's ID field
+	 * @param item the original version of the item to be changed
+	 * @return the InventoryItem whether or not it has changed
+	 */
+	private InventoryItem editId(InventoryItem item) {
+		int itemId = view.getIdInput(true);
+		if(itemId != InventoryMenuView.EXIT){
+			InventoryItem updatedItem = new InventoryItem(itemId, item.getName(), 
+					item.getDescription(), item.getQuantity());
+			if(view.confirmEdit(item, updatedItem)){
+				repository.deleteById(item.getId());
+				item.setId(itemId);
+				repository.addItem(item);
+			}
+			else{
+				view.abortEdit("ID field");
+			}
+		}
+		else{
+			view.abortEdit("ID field");
+		}
+		return item;
+	}
+
+	/**
+	 * Handle InventoryMenuView I/O to change an InventoryItem's name field
+	 * @param item the original version of the item to be changed
+	 * @return the InventoryItem whether or not it has changed
+	 */
+	private InventoryItem editName(InventoryItem item) {
+		String newName = view.getNameInput();
+		if(!newName.equals(String.valueOf(InventoryMenuView.EXIT))){
+			InventoryItem newItem = 
+					new InventoryItem(item.getId(), newName, item.getDescription(), item.getQuantity());
+			if(view.confirmEdit(item, newItem)){
+				repository.updateItem(newItem);
+				return newItem;
+			}
+			else{
+				view.abortEdit("name field");
+			}
+		}
+		else{
+			view.abortEdit("name field");
+		}
+		return item;
+	}
+
+	/**
+	 * Handle InventoryMenuView I/O to change an InventoryItem's quantity field
+	 * @param item the original version of the item to be changed
+	 * @return the InventoryItem whether or not it has changed
+	 */
+	private InventoryItem editQuantity(InventoryItem item) {
+		int newQuantity = view.getQuantityInput();
+		if(newQuantity != InventoryMenuView.EXIT){
+			InventoryItem newItem = new InventoryItem(item.getId(), item.getName(), item.getDescription(), newQuantity);
+			if(view.confirmEdit(item, newItem)){
+				repository.updateItem(newItem);
+				return newItem;
+			}
+			else{
+				view.abortEdit("quantity field");
+			}
+		}
+		else{
+			view.abortEdit("quantity field");
+		}
+		return item;
+	}
+
+	/**
+	 * Handle InventoryMenuView I/O to change an InventoryItem's info field
+	 * @param item the original version of the item to be changed
+	 * @return the InventoryItem whether or not it has changed
+	 */
+	private InventoryItem editInfo(InventoryItem item) {
+		String newInfo = view.getInfoInput();
+		if(!newInfo.equals(String.valueOf(InventoryMenuView.EXIT))){
+			InventoryItem newItem = 
+					new InventoryItem(item.getId(), item.getName(), newInfo, item.getQuantity());
+			if(view.confirmEdit(item, newItem)){
+				repository.updateItem(newItem);
+				return newItem;
+			}
+			else{
+				view.abortEdit("info field");
+			}
+		}
+		else{
+			view.abortEdit("info field");
+		}
+		return item;
 	}
 
 }

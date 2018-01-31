@@ -47,7 +47,7 @@ public class CustomerMenuView implements MenuView {
 	 * Display menu options to user
 	 */
 	@Override
-	public void displayMenu() {
+	public void displayMainMenu() {
 		System.out.println();
 		System.out.println("Enter the number denoting the action desired");
 		System.out.println("Add new Customer.............." + ADD_CUSTOMER);
@@ -69,7 +69,7 @@ public class CustomerMenuView implements MenuView {
 	 * </ul>
 	 */
 	@Override
-	public int getMenuChoice() {
+	public int getMainMenuChoice() {
 		int choice = NO_CHOICE;	
 		while( choice == NO_CHOICE){
 			System.out.print("Enter choice ");

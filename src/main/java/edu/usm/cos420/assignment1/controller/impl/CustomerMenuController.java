@@ -43,8 +43,8 @@ public class CustomerMenuController implements MenuController{
 	public void provideMenuAccess() {
 		int choice = CustomerMenuView.NO_CHOICE;
 		while(choice != CustomerMenuView.EXIT){
-			view.displayMenu();
-			choice = view.getMenuChoice();
+			view.displayMainMenu();
+			choice = view.getMainMenuChoice();
 			executeChoice(choice);
 		}
 

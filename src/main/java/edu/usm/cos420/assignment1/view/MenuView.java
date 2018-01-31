@@ -5,7 +5,7 @@ public interface MenuView {
 	/**
 	 * Display menu options to user
 	 */
-	public void displayMenu();
+	public void displayMainMenu();
 	
 	
 	/**
@@ -13,7 +13,7 @@ public interface MenuView {
 	 * @return an int matching the user's choice. 
 	 * See implementation for valid choices
 	 */
-	public int getMenuChoice();
+	public int getMainMenuChoice();
 	
 }
 

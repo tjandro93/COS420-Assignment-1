@@ -60,4 +60,23 @@ public class InventoryRepositoryImpl implements InventoryRepository {
 		return dao.list();
 	}
 
+	/**
+	 * Delete the InventoryItem with the supplied ID
+	 * @param id the ID of the InventoryItem to be deleted
+	 */
+	@Override
+	public void deleteById(int id) {
+		dao.remove((long) id);
+	}
+
+
+	/**
+	 * Update the InventoryItem whose ID matches that of the supplied InventoryItem
+	 * @param newItem the InventoryItem to be updated
+	 */
+	@Override
+	public void updateItem(InventoryItem newItem) {
+		dao.update(newItem);
+	}
+
 }

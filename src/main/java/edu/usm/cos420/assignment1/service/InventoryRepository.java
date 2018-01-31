@@ -27,5 +27,17 @@ public interface InventoryRepository {
 	 * @return list of all {@code InventoryItem} in the system
 	 */
 	public List<InventoryItem> getAll();
+
+	/**
+	 * Delete the InventoryItem with the supplied ID
+	 * @param id the ID of the InventoryItem to be deleted
+	 */
+	public void deleteById(int id);
+
+	/**
+	 * Update the InventoryItem whose ID matches that of the supplied InventoryItem
+	 * @param newItem the InventoryItem to be updated
+	 */
+	public void updateItem(InventoryItem newItem);
 	
 }
