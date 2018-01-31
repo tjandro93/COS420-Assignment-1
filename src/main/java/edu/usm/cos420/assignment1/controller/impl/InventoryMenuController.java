@@ -81,17 +81,13 @@ public class InventoryMenuController implements MenuController{
 	 */
 	private void addItem() {
 		System.out.println();
-		view.displayIdPrompt();
-		int itemId = view.getNewId();
+		int itemId = view.getIdInput(true);
 		if(itemId != InventoryMenuView.EXIT){
-			view.displayNamePrompt();
-			String itemName = view.getNewName();
+			String itemName = view.getNameInput();
 			if(!itemName.equals(String.valueOf(InventoryMenuView.EXIT))){
-				view.displayInfoPrompt();
-				String itemInfo = view.getNewInfo();
+				String itemInfo = view.getInfoInput();
 				if(!itemInfo.equals(String.valueOf(InventoryMenuView.EXIT))){
-					view.displayQuantityPrompt();
-					int itemQuantity = view.getNewQuantity();
+					int itemQuantity = view.getQuantityInput();
 					if(itemQuantity != InventoryMenuView.EXIT){
 						InventoryItem newItem = new InventoryItem(itemId, itemName, itemInfo, itemQuantity);
 						System.out.println("You entered\t " + newItem);

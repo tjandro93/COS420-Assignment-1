@@ -101,21 +101,16 @@ public class InventoryMenuView implements MenuView {
 	}
 
 	/**
-	 * Prompt user to enter a Customer ID
-	 */
-	public void displayIdPrompt(){
-		System.out.println("Enter 6-digit Customer ID or 0 to abort");
-	}
-
-	/**
-	 * Get user input for an InventoryItem ID
+	 * Prompt and get user input for an InventoryItem ID
+	 * @param isNewItem set to true if the ID should be unused
 	 * @return either a valid InventoryItem ID 
 	 * or {@code #EXIT} if the user wishes to abort the operation
 	 */
-	public int getNewId(){
+	public int getIdInput(boolean isNewItem){
+		System.out.println("Enter 6-digit Item ID or 0 to abort");
 		int idInt;
 		String idStr = Input.readLine();
-		while((idInt = validateNewId(idStr)) == NO_CHOICE){
+		while((idInt = validateNewId(idStr, isNewItem)) == NO_CHOICE){
 			idStr = Input.readLine();
 		}
 		return idInt;
@@ -125,10 +120,11 @@ public class InventoryMenuView implements MenuView {
 	 * Validate the input InventoryItem ID to ensure it is 6 Digits
 	 * and is not already being used
 	 * @param idStr the input from the user
+	 * @param isNewItem set to true if the ID should be unique
 	 * @return a valid ID number
 	 *  or {@code #EXIT} if the user wishes to abort the operation
 	 */
-	private int validateNewId(String idStr){
+	private int validateNewId(String idStr, boolean isNewItem){
 		int idNum = NO_CHOICE;
 		if(idStr.equals("0")){
 			return EXIT;
@@ -145,7 +141,7 @@ public class InventoryMenuView implements MenuView {
 			System.out.println(idStr + " is not a valid ID");
 			return NO_CHOICE;
 		}
-		if(repository.findItemById(idNum) != null){
+		if(isNewItem && repository.findItemById(idNum) != null){
 			System.out.println("An item with ID " + idNum + " is already in the system");
 			return NO_CHOICE;
 		}
@@ -156,17 +152,11 @@ public class InventoryMenuView implements MenuView {
 	}
 
 	/**
-	 * Prompt user to enter an InventoryItem name
-	 */
-	public void displayNamePrompt() {
-		System.out.println("Enter a name for the item or 0 to abort");
-	}
-
-	/**
 	 * Get user input for an InventoryItem name. Will not return until a nonempty string is input
 	 * @return a valid InventoryItem name
 	 */
-	public String getNewName(){
+	public String getNameInput(){
+		System.out.println("Enter a name for the item or 0 to abort");
 		String itemName = null;
 		while(itemName == null){
 			itemName = Input.readLine();
@@ -179,17 +169,11 @@ public class InventoryMenuView implements MenuView {
 	}
 
 	/**
-	 * Prompt user to enter a description for the InventoryItem
-	 */
-	public void displayInfoPrompt() {
-		System.out.println("Enter a short description of the item or 0 to abort");
-	}
-
-	/**
 	 * Get user input for an InventoryItem description. Will not return until a nonempty string is input
-	 * @return a valid InventoryItem descritption
+	 * @return a valid InventoryItem description
 	 */
-	public String getNewInfo(){
+	public String getInfoInput(){
+		System.out.println("Enter a short description of the item or 0 to abort");
 		String itemInfo = null;
 		while(itemInfo == null){
 			itemInfo = Input.readLine();
@@ -200,26 +184,19 @@ public class InventoryMenuView implements MenuView {
 		}
 		return itemInfo;
 	}
-
-	/**
-	 * Prompt user to input a quantity for the InventoryItem
-	 */
-	public void displayQuantityPrompt() {
-		System.out.println("Enter the initial quantity for the item or 0 to abort");
-	}
 	
 	/**
 	 * Get user input for the initial stock quantity for the InventoryItem
 	 * @return the quantity for the InventoryItem
 	 */
-	public int getNewQuantity(){
+	public int getQuantityInput(){
+		System.out.println("Enter the initial quantity for the item or 0 to abort");
 		int quantityInt;
 		String quantityStr = Input.readLine();
 		while((quantityInt = validateQuantity(quantityStr)) == NO_CHOICE){
 			quantityStr = Input.readLine();
 		}
 		return quantityInt;
-		
 	}
 
 	/**
@@ -245,6 +222,10 @@ public class InventoryMenuView implements MenuView {
 		
 	}
 	
+	/**
+	 * List a list of InventoryItems
+	 * @param items the InventoryItems to be displayed
+	 */
 	public void displayAllItems(List<InventoryItem> items){
 		System.out.println(items.size() + " items:");
 		for(InventoryItem i : items){
