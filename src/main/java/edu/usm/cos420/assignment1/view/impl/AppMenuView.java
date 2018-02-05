@@ -1,12 +1,14 @@
 package edu.usm.cos420.assignment1.view.impl;
 
+import java.util.Scanner;
+
 import edu.usm.cos420.assignment1.util.Input;
 import edu.usm.cos420.assignment1.view.MenuView;
 
 /**
  * View class to handle main menu input and output
  * <p>
- * This view is to be attached to {@link edu.usm.cos420.assignment1.controller.impl.AppMenuController}
+ * This view is to be attached to {@link edu.usm.cos420.assignment1.controller.impl.MainMenuController}
  */
 public class AppMenuView implements MenuView{
 
@@ -16,8 +18,6 @@ public class AppMenuView implements MenuView{
 	public static final int CUSTOMER_MENU = 1;
 	/** {@value #INVENTORY_MENU} : access inventory sub-menu*/
 	public static final int INVENTORY_MENU = 2;
-	/** {@value #ORDER_MENU} : access order sub-menu*/
-	public static final int ORDER_MENU = 3;
 	/** {@value #EXIT} : exit the main menu (closing the application)*/
 	public static final int EXIT = 0;
 
@@ -34,7 +34,6 @@ public class AppMenuView implements MenuView{
 		System.out.println("Enter the number denoting the action desired");
 		System.out.println("Customer Menu................." + CUSTOMER_MENU);
 		System.out.println("Inventory Menu................" + INVENTORY_MENU);
-		System.out.println("Order Menu...................." + ORDER_MENU);
 		System.out.println("Exit.........................." + EXIT);
 	}
 
@@ -46,7 +45,6 @@ public class AppMenuView implements MenuView{
 	 * <ul>
 	 * 	<li>{@value #CUSTOMER_MENU} : Display the customer menu
 	 *	<li>{@value #INVENTORY_MENU} : Display the inventory menu
-	 *	<li>{@value #ORDER_MENU} : Display the order menu
 	 *	<li>{@value #EXIT} : Exit the application
 	 * </ul>
 	 */
@@ -69,7 +67,6 @@ public class AppMenuView implements MenuView{
 	 * * <ul>
 	 * 	<li>{@value #CUSTOMER_MENU} : Display the customer menu
 	 *	<li>{@value #INVENTORY_MENU} : Display the inventory menu
-	 *	<li>{@value #ORDER_MENU} : Display the order menu
 	 *	<li>{@value #EXIT} : Exit the application
 	 *  <li>{@value #NO_CHOICE} : returned if {@code userInput} is an invalid choice
 	 * </ul>
@@ -82,7 +79,7 @@ public class AppMenuView implements MenuView{
 		catch(NumberFormatException e){
 			System.out.println(userInput + " is not a valid action");
 		}
-		if (choice != CUSTOMER_MENU && choice != INVENTORY_MENU && choice != ORDER_MENU && choice != EXIT){
+		if (choice != CUSTOMER_MENU && choice != INVENTORY_MENU  && choice != EXIT){
 			System.out.println(userInput + " is not a valid action");
 
 		}

@@ -65,9 +65,6 @@ public class AppMenuController implements MenuController {
 		case AppMenuView.INVENTORY_MENU:
 			inventoryMenuController.provideMenuAccess();
 			break;
-		case AppMenuView.ORDER_MENU:
-			System.out.println("Order Menu PLaceholder");
-			break;
 		default:
 			break;
 

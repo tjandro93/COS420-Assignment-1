@@ -165,6 +165,8 @@ public class CustomerMenuController implements MenuController{
 	 */
 	private void lookupMenu(Customer customer) {
 		System.out.println("Lookup menu placeholder for customer = " + customer.toString());
+		view.displayLookupMenu(customer);
+		int choice = view.getLookupMenuChoice();
 	}
 	
 

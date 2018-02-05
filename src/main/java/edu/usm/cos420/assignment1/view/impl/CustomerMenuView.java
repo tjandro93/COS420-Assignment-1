@@ -23,6 +23,14 @@ public class CustomerMenuView implements MenuView {
 	public static final int FIND_CUSTOMER_ID = 3;
 	/** {@value #LIST_CUSTOMERS } : list all customers in the system*/
 	public static final int LIST_CUSTOMERS = 4;
+	/** {@value #ORDERS } : access the orders menu*/
+	public static final int ORDERS = 5;
+	/** {@value #EDIT_ID } : edit the customer ID*/
+	public static final int EDIT_ID = 6;
+	/** {@value #EDIT_NAME } : edit the customer name*/	
+	public static final int EDIT_NAME = 7;
+	/** {@value #EDIT_ADDRESS } : edit the customer address*/
+	public static final int EDIT_ADDRESS = 8;
 	/** {@value #EXIT } : exit the customer menu (returning to the main menu)*/
 	public static final int EXIT = 0;
 
@@ -78,7 +86,7 @@ public class CustomerMenuView implements MenuView {
 			System.out.print("Enter choice ");
 			System.out.flush();
 			String choiceStr = Input.readLine();
-			choice = validateChoice(choiceStr);
+			choice = validateMainMenuChoice(choiceStr);
 		}
 		return choice;
 	}
@@ -95,7 +103,7 @@ public class CustomerMenuView implements MenuView {
 	 *	<li>{@value #NO_CHOICE} : returned if input is an invalid action
 	 * </ul>
 	 */
-	private int validateChoice(String input){
+	private int validateMainMenuChoice(String input){
 		int choice = NO_CHOICE;
 		try{
 			choice = Integer.parseInt(input);
@@ -238,5 +246,74 @@ public class CustomerMenuView implements MenuView {
 	public void abortLookup() {
 		System.out.println("Lookup customer aborted");
 		
+	}
+	
+	/**
+	 * Display options for accessing a specific customer
+	 * @param customer The customer which is being accessed or changed
+	 */
+	public void displayLookupMenu(Customer customer) {
+		System.out.println(customer.toString());
+		System.out.println("Access customer orders........" + ORDERS);;
+		System.out.println("Edit customer ID ............." + EDIT_ID);
+		System.out.println("Edit customer name............" + EDIT_NAME);
+		System.out.println("Edit customer address........." + EDIT_ADDRESS);
+		System.out.println("Exit.........................." + EXIT);
+	}
+	
+	/**
+	 * Read the menu choice from the user
+	 * <p>
+	 * Method will not return until a validate choice has been made
+	 * @return
+	 * <ul>
+	 * 	<li>{@value #ALL_ORDERS} : display all orders associated with customer
+	 *	<li>{@value #ORDERS_IN_RANGE} : display all orders within a date range
+	 *	<li>{@value #EDIT_ID} : edit the customer's ID
+	 *	<li>{@value #EDIT_NAME} : edit the customer's name
+	 *	<li>{@value #EDIT_ADDRESS} : edit the customer's address
+	 *	<li>{@value #EXIT} : Exit the customer menu
+	 * </ul>
+	 */
+	public int getLookupMenuChoice() {
+		int choice = NO_CHOICE;	
+		while( choice == NO_CHOICE){
+			System.out.print("Enter choice ");
+			System.out.flush();
+			String choiceStr = Input.readLine();
+			choice = validateLookupMenuChoice(choiceStr);
+		}
+		return choice;
+	}
+
+
+	/**
+	 * Private method to validate user input of menu choice
+	 * @param input the String input by the user
+	 * @return
+	 * <ul>
+	 * 	<li>{@value #ALL_ORDERS} : display all orders associated with customer
+	 *	<li>{@value #ORDERS_IN_RANGE} : display all orders within a date range
+	 *	<li>{@value #EDIT_ID} : edit the customer's ID
+	 *	<li>{@value #EDIT_NAME} : edit the customer's name
+	 *	<li>{@value #EDIT_ADDRESS} : edit the customer's address
+	 *	<li>{@value #NO_CHOICE} : returned if input is an invalid action
+	 *	<li>{@value #EXIT} : Exit the customer menu
+	 * </ul>
+	 */
+	private int validateLookupMenuChoice(String choiceStr) {
+		int choice = NO_CHOICE;
+		try{
+			choice = Integer.parseInt(choiceStr);
+		}
+		catch(NumberFormatException e){
+			System.out.println(choiceStr + " is not a valid action");
+		}
+		if (choice != ORDERS && choice != EDIT_ID && choice != EDIT_NAME && choice != EDIT_ADDRESS 
+				&& choice != NO_CHOICE && choice != EXIT){
+			System.out.println(choiceStr + " is not a valid action");
+
+		}
+		return choice;
 	}
 }
