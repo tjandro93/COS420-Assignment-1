@@ -1,7 +1,6 @@
 package edu.usm.cos420.assignment1.view.impl;
 
 import java.util.List;
-import java.util.Scanner;
 
 import edu.usm.cos420.assignment1.domain.Customer;
 import edu.usm.cos420.assignment1.service.CustomerRepository;
@@ -48,7 +47,7 @@ public class CustomerMenuView implements MenuView {
 	 * Display menu options to user
 	 */
 	@Override
-	public void displayMenu() {
+	public void displayMainMenu() {
 		System.out.println();
 		System.out.println("Enter the number denoting the action desired");
 		System.out.println("Add new Customer.............." + ADD_CUSTOMER);
@@ -70,7 +69,7 @@ public class CustomerMenuView implements MenuView {
 	 * </ul>
 	 */
 	@Override
-	public int getMenuChoice() {
+	public int getMainMenuChoice() {
 		int choice = NO_CHOICE;	
 		while( choice == NO_CHOICE){
 			System.out.print("Enter choice ");
@@ -109,21 +108,16 @@ public class CustomerMenuView implements MenuView {
 	}
 
 	/**
-	 * Prompt user to enter a Customer ID
-	 */
-	public void displayIdPrompt(){
-		System.out.println("Enter 6-digit Customer ID or 0 to abort");
-	}
-
-	/**
 	 * Get user input for a Customer ID
+	 * @param checkId set to true to check the ID is not yet used
 	 * @return either a valid Customer ID 
 	 * or {@code #EXIT} if the user wishes to abort the operation
 	 */
-	public int getNewId(){
+	public int getIdInput(boolean checkId){
+		System.out.println("Enter 6-digit Customer ID or 0 to abort");
 		int idInt;
 		String idStr = Input.readLine();
-		while((idInt = validateNewId(idStr)) == NO_CHOICE){
+		while((idInt = validateNewId(idStr, checkId)) == NO_CHOICE){
 			idStr = Input.readLine();
 		}
 		return idInt;
@@ -133,11 +127,12 @@ public class CustomerMenuView implements MenuView {
 	 * Validate the input Customer ID to ensure it is 6 Digits
 	 * and is not already being used
 	 * @param idStr the input from the user
+	 * @param checkId set to true to check the ID is not yet used
 	 * @return a valid ID number,
 	 *  {@code #EXIT} if the user wishes to abort the operation,
 	 *  or {@code #NO_CHOICE} if the input is invalid
 	 */
-	private int validateNewId(String idStr){
+	private int validateNewId(String idStr, boolean checkId){
 		int idNum = NO_CHOICE;
 		if(idStr.equals("0")){
 			return EXIT;
@@ -154,7 +149,7 @@ public class CustomerMenuView implements MenuView {
 			System.out.println(idStr + " is not a valid ID");
 			return NO_CHOICE;
 		}
-		if(repository.findCustomersById(idNum) != null){
+		if(checkId && repository.findCustomersById(idNum) != null){
 			System.out.println("A Customer with ID " + idNum + " is already in the system");
 			return NO_CHOICE;
 		}
@@ -165,17 +160,11 @@ public class CustomerMenuView implements MenuView {
 	}
 
 	/**
-	 * Prompt user to enter a Customer name
-	 */
-	public void displayNamePrompt(){
-		System.out.println("Enter a name for the Customer or 0 to abort");
-	}
-
-	/**
 	 * Get user input for a Customer name. Will not return until a nonempty string is input
 	 * @return a valid Customer name
 	 */
-	public String getNewName(){
+	public String getNameInput(){
+		System.out.println("Enter a name for the Customer or 0 to abort");
 		String custName = null;
 		while(custName == null){
 			custName = Input.readLine();
@@ -188,17 +177,11 @@ public class CustomerMenuView implements MenuView {
 	}
 
 	/**
-	 * Prompt user to enter a Customer's address
-	 */
-	public void displayAddressPrompt(){
-		System.out.println("Enter the customer's address or 0 to abort");
-	}
-
-	/**
 	 * Get user input for a Customer address. Will not return until a nonempty string is input
 	 * @return a valid Customer address
 	 */
-	public String getNewAddress(){
+	public String getAddressInput(){
+		System.out.println("Enter the customer's address or 0 to abort");
 		String custAddr = null;
 		while(custAddr == null){
 			custAddr = Input.readLine();

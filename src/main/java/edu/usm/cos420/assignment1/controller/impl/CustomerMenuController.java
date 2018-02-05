@@ -43,8 +43,8 @@ public class CustomerMenuController implements MenuController{
 	public void provideMenuAccess() {
 		int choice = CustomerMenuView.NO_CHOICE;
 		while(choice != CustomerMenuView.EXIT){
-			view.displayMenu();
-			choice = view.getMenuChoice();
+			view.displayMainMenu();
+			choice = view.getMainMenuChoice();
 			executeChoice(choice);
 		}
 
@@ -76,14 +76,11 @@ public class CustomerMenuController implements MenuController{
 	 */
 	public void addCustomer(){
 		System.out.println();
-		view.displayIdPrompt();
-		int custId = view.getNewId();
+		int custId = view.getIdInput(true);
 		if(custId != CustomerMenuView.EXIT){
-			view.displayNamePrompt();
-			String custName = view.getNewName();
+			String custName = view.getNameInput();
 			if(!custName.equals(String.valueOf(CustomerMenuView.EXIT))){
-				view.displayAddressPrompt();
-				String custAddr = view.getNewAddress();
+				String custAddr = view.getAddressInput();
 				if(!custAddr.equals(String.valueOf(CustomerMenuView.EXIT))){
 					Customer newCust = new Customer(custId, custName, custAddr);
 					System.out.println("You entered\t" + newCust);
