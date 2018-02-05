@@ -17,10 +17,10 @@ public class CustomerMenuView implements MenuView {
 	public static final int NO_CHOICE = -1;
 	/** {@value #ADD_CUSTOMER } : add a customer to the system*/
 	public static final int ADD_CUSTOMER = 1;
-	/** {@value #FIND_CUSTOMER_NAME } : find a customer by name*/
-	public static final int FIND_CUSTOMER_NAME = 2;
 	/**	{@value #FIND_CUSTOMER_ID } : find a customer by ID*/
-	public static final int FIND_CUSTOMER_ID = 3;
+	public static final int FIND_CUSTOMER_ID = 2;
+	/** {@value #FIND_CUSTOMER_NAME } : find a customer by name*/
+	public static final int FIND_CUSTOMER_NAME = 3;
 	/** {@value #LIST_CUSTOMERS } : list all customers in the system*/
 	public static final int LIST_CUSTOMERS = 4;
 	/** {@value #ORDERS } : access the orders menu*/
@@ -61,8 +61,8 @@ public class CustomerMenuView implements MenuView {
 		System.out.println();
 		System.out.println("Enter the number denoting the action desired");
 		System.out.println("Add new Customer.............." + ADD_CUSTOMER);
-		System.out.println("Look up Customer by name......" + FIND_CUSTOMER_NAME);
 		System.out.println("Look up Customer by ID........" + FIND_CUSTOMER_ID);
+		System.out.println("Look up Customer by name......" + FIND_CUSTOMER_NAME);
 		System.out.println("List all Customers............" + LIST_CUSTOMERS);
 		System.out.println("Exit.........................." + EXIT);
 	}

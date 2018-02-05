@@ -14,7 +14,7 @@ public class AppMenuController implements MenuController {
 
 	private CustomerRepository customerRepository;
 
-	private AppMenuView mainMenuView;
+	private AppMenuView appMenuView;
 	private CustomerMenuController customerMenuController;
 	private InventoryMenuController inventoryMenuController;
 
@@ -22,7 +22,7 @@ public class AppMenuController implements MenuController {
 	 * Default Constructor, initializes all required fields appropriately 
 	 */
 	public AppMenuController(){
-		this.mainMenuView = new AppMenuView();
+		this.appMenuView = new AppMenuView();
 		this.customerRepository = new CustomerRepositoryImpl();
 		this.customerMenuController = new CustomerMenuController(customerRepository);
 		this.inventoryMenuController = new InventoryMenuController();
@@ -33,7 +33,7 @@ public class AppMenuController implements MenuController {
 	 * @param mainMenuView view for menu UI
 	 */
 	public AppMenuController(AppMenuView mainMenuView){
-		this.mainMenuView = mainMenuView;
+		this.appMenuView = mainMenuView;
 		this.customerRepository = new CustomerRepositoryImpl();
 		this.customerMenuController = new CustomerMenuController(customerRepository);
 		this.inventoryMenuController = new InventoryMenuController();
@@ -46,8 +46,8 @@ public class AppMenuController implements MenuController {
 	public void provideMenuAccess(){
 		int choice = AppMenuView.NO_CHOICE;
 		while(choice != AppMenuView.EXIT){
-			mainMenuView.displayMainMenu();
-			choice = mainMenuView.getMainMenuChoice();
+			appMenuView.displayMainMenu();
+			choice = appMenuView.getMainMenuChoice();
 			executeChoice(choice);
 		}
 	}

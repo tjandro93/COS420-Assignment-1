@@ -7,6 +7,8 @@ import java.util.List;
 import edu.usm.cos420.assignment1.controller.MenuController;
 import edu.usm.cos420.assignment1.domain.Customer;
 import edu.usm.cos420.assignment1.service.CustomerRepository;
+import edu.usm.cos420.assignment1.service.OrderRepository;
+import edu.usm.cos420.assignment1.service.impl.OrderRepositoryImpl;
 import edu.usm.cos420.assignment1.util.Input;
 
 /**
@@ -15,7 +17,9 @@ import edu.usm.cos420.assignment1.util.Input;
 public class CustomerMenuController implements MenuController{
 
 	private CustomerMenuView view;
-	private CustomerRepository repository;
+	private CustomerRepository customerRepository;
+	private OrderMenuController orderMenuController;
+	private OrderRepository orderRepository;
 
 	/**
 	 * Constructor: parameters provided to link View and Repository references
@@ -24,7 +28,9 @@ public class CustomerMenuController implements MenuController{
 	 */
 	public CustomerMenuController(CustomerMenuView view, CustomerRepository repository){
 		this.view = view;
-		this.repository = repository;
+		this.customerRepository = repository;
+		this.orderRepository = new OrderRepositoryImpl();
+		this.orderMenuController = new OrderMenuController(this.orderRepository);
 	}
 
 	/**
@@ -32,8 +38,10 @@ public class CustomerMenuController implements MenuController{
 	 * @param repository to use
 	 */
 	public CustomerMenuController(CustomerRepository repository){
-		this.repository = repository;
+		this.customerRepository = repository;
 		this.view = new CustomerMenuView(repository);
+		this.orderRepository = new OrderRepositoryImpl();
+		this.orderMenuController = new OrderMenuController();
 	}
 
 	/**
@@ -88,7 +96,7 @@ public class CustomerMenuController implements MenuController{
 					Customer newCust = new Customer(custId, custName, custAddr);
 					System.out.println("You entered\t" + newCust);
 					if(Input.getConfirmation()){
-						repository.addCustomer(newCust);
+						customerRepository.addCustomer(newCust);
 						System.out.println("Customer saved");
 					}
 					else{
@@ -111,7 +119,7 @@ public class CustomerMenuController implements MenuController{
 	 */
 	private void listCustomers(){
 		System.out.println();
-		List<Customer> allCustomers = repository.getAll();
+		List<Customer> allCustomers = customerRepository.getAll();
 		view.displayAllCustomers(allCustomers);
 	}
 
@@ -129,7 +137,7 @@ public class CustomerMenuController implements MenuController{
 				return;
 			}
 
-			List<Customer> customers = repository.findCustomersByName(custName);
+			List<Customer> customers = customerRepository.findCustomersByName(custName);
 			if(customers == null || customers.isEmpty()) {
 				view.customerNotFound(custName);
 			}
@@ -150,11 +158,11 @@ public class CustomerMenuController implements MenuController{
 	private void findCustomerById() {
 		System.out.println();
 		int custId = view.getIdInput(false);
-		Customer customer = repository.findCustomersById(custId);
+		Customer customer = customerRepository.findCustomersById(custId);
 		while(customer == null) {
 			view.customerNotFound(Integer.toString(custId));
 			custId = view.getIdInput(false);
-			customer = repository.findCustomersById(custId);
+			customer = customerRepository.findCustomersById(custId);
 		}
 		lookupMenu(customer);
 	}
@@ -171,7 +179,8 @@ public class CustomerMenuController implements MenuController{
 			choice = view.getLookupMenuChoice();
 			switch(choice) {
 			case CustomerMenuView.ORDERS:
-				System.out.println("Order menu placeholder, will call new controller");
+				orderMenuController.setCustomer(customer);
+				orderMenuController.provideMenuAccess();
 				break;
 			case CustomerMenuView.EDIT_ID:
 				customer = editId(customer);
@@ -189,6 +198,11 @@ public class CustomerMenuController implements MenuController{
 		}
 	}
 
+	/**
+	 * Edit the ID field of a customer
+	 * @param customer the target to be edited
+	 * @return the customer after updating
+	 */
 	private Customer editId(Customer customer) {
 		int custId = view.getIdInput(true);
 		if(custId == CustomerMenuView.EXIT) {
@@ -197,8 +211,8 @@ public class CustomerMenuController implements MenuController{
 		else {
 			Customer updatedCustomer = new Customer(custId, customer.getName(), customer.getAddress());
 			if(view.confirmEdit(customer, updatedCustomer)) {
-				repository.deleteById(customer.getId());
-				repository.addCustomer(updatedCustomer);
+				customerRepository.deleteById(customer.getId());
+				customerRepository.addCustomer(updatedCustomer);
 				return updatedCustomer;
 			}
 			else {
@@ -210,6 +224,11 @@ public class CustomerMenuController implements MenuController{
 		
 	}
 
+	/**
+	 * Edit the name field of a customer
+	 * @param customer the target to be edited
+	 * @return the customer after updating
+	 */
 	private Customer editName(Customer customer) {
 		String custName = view.getNameInput();
 		if(custName.equals(String.valueOf(CustomerMenuView.EXIT))) {
@@ -218,21 +237,37 @@ public class CustomerMenuController implements MenuController{
 		else {
 			Customer updatedCustomer = new Customer(customer.getId(), custName, customer.getAddress());
 			if(view.confirmEdit(customer, updatedCustomer)) {
-				repository.updateCustomer(updatedCustomer);
+				customerRepository.updateCustomer(updatedCustomer);
 				return updatedCustomer;
 			}
 			else {
 				view.abortEdit("name field");
-				return customer;
 			}
 			
 		}
 		return customer;
 	}
 
+	/**
+	 * Edit the address field of a customer
+	 * @param customer the target to be edited
+	 * @return the customer after editing
+	 */
 	private Customer editAddress(Customer customer) {
-		// TODO Auto-generated method stub
-		System.out.println("Edit address placeholder");
+		String custAddr = view.getAddressInput();
+		if(custAddr.equals(String.valueOf(CustomerMenuView.EXIT))) {
+			view.abortEdit("address field");
+		}
+		else{
+			Customer updatedCustomer = new Customer(customer.getId(), customer.getName(), custAddr);
+			if(view.confirmEdit(customer, updatedCustomer)){
+				customerRepository.updateCustomer(updatedCustomer);
+				return updatedCustomer;
+			}
+			else{
+				view.abortEdit("address field");
+			}
+		}
 		return customer;
 	}
 
