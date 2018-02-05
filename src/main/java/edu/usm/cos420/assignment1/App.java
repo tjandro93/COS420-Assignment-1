@@ -1,6 +1,6 @@
 package edu.usm.cos420.assignment1;
 
-import edu.usm.cos420.assignment1.controller.MainMenuController;
+import edu.usm.cos420.assignment1.controller.impl.MainMenuController;
 import edu.usm.cos420.assignment1.view.impl.MainMenuView;
 
 /**

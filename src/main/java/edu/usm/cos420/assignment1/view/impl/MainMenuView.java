@@ -8,7 +8,7 @@ import edu.usm.cos420.assignment1.view.MenuView;
 /**
  * View class to handle main menu input and output
  * <p>
- * This view is to be attached to {@link edu.usm.cos420.assignment1.controller.MainMenuController}
+ * This view is to be attached to {@link edu.usm.cos420.assignment1.controller.impl.MainMenuController}
  */
 public class MainMenuView implements MenuView{
 
