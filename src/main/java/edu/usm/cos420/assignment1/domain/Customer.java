@@ -28,7 +28,7 @@ public class Customer implements Serializable{
 		 * @param address the customer's address
 		 * @param name the customer's name
 		 */
-		public Customer(int id, String name, String address) {
+		public Customer(long id, String name, String address) {
 			this.id = id;
 			this.address = address;
 			this.name = name;

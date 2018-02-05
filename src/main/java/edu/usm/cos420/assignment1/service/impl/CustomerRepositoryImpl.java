@@ -75,4 +75,25 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 	public List<Customer> getAll(){
 		return dao.list();
 	}
+
+
+	/**
+	 * Remove the Customer with the given ID from the system
+	 * @param id the ID of the customer to delete
+	 */
+	@Override
+	public void deleteById(long id) {
+		dao.remove(id);
+	}
+
+	/**
+	 * Update an existing Customer in the system
+	 * @param updatedCustomer the altered Customer instance. Must have the original ID for the change to be correct
+	 */
+	@Override
+	public void updateCustomer(Customer updatedCustomer) {
+		dao.update(updatedCustomer);
+	}
+	
+
 }

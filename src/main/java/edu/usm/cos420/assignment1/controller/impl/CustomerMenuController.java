@@ -123,12 +123,12 @@ public class CustomerMenuController implements MenuController{
 		String custName = view.getNameInput();
 		boolean validCustomer = false;
 		while(!validCustomer) {
-			
+
 			if(custName.equals(String.valueOf(CustomerMenuView.EXIT))) {
 				view.abortLookup();
 				return;
 			}
-			
+
 			List<Customer> customers = repository.findCustomersByName(custName);
 			if(customers == null || customers.isEmpty()) {
 				view.customerNotFound(custName);
@@ -164,10 +164,77 @@ public class CustomerMenuController implements MenuController{
 	 * @param customer the customer found by findCustomerByName() or findCustomerByID()
 	 */
 	private void lookupMenu(Customer customer) {
-		System.out.println("Lookup menu placeholder for customer = " + customer.toString());
-		view.displayLookupMenu(customer);
-		int choice = view.getLookupMenuChoice();
+		int choice = CustomerMenuView.NO_CHOICE;
+		while(choice != CustomerMenuView.EXIT) {
+			System.out.println();
+			view.displayLookupMenu(customer);
+			choice = view.getLookupMenuChoice();
+			switch(choice) {
+			case CustomerMenuView.ORDERS:
+				System.out.println("Order menu placeholder, will call new controller");
+				break;
+			case CustomerMenuView.EDIT_ID:
+				customer = editId(customer);
+				break;
+			case CustomerMenuView.EDIT_NAME:
+				customer = editName(customer);
+				break;
+			case CustomerMenuView.EDIT_ADDRESS:
+				customer = editAddress(customer);
+				break;
+			default:
+				System.out.println("Invalid option");
+				break;
+			}
+		}
 	}
-	
+
+	private Customer editId(Customer customer) {
+		int custId = view.getIdInput(true);
+		if(custId == CustomerMenuView.EXIT) {
+			view.abortEdit("ID field");
+		}
+		else {
+			Customer updatedCustomer = new Customer(custId, customer.getName(), customer.getAddress());
+			if(view.confirmEdit(customer, updatedCustomer)) {
+				repository.deleteById(customer.getId());
+				repository.addCustomer(updatedCustomer);
+				return updatedCustomer;
+			}
+			else {
+				view.abortEdit("ID field");
+			}
+		}
+		return customer;
+		
+		
+	}
+
+	private Customer editName(Customer customer) {
+		String custName = view.getNameInput();
+		if(custName.equals(String.valueOf(CustomerMenuView.EXIT))) {
+			view.abortEdit("name field");
+		}
+		else {
+			Customer updatedCustomer = new Customer(customer.getId(), custName, customer.getAddress());
+			if(view.confirmEdit(customer, updatedCustomer)) {
+				repository.updateCustomer(updatedCustomer);
+				return updatedCustomer;
+			}
+			else {
+				view.abortEdit("name field");
+				return customer;
+			}
+			
+		}
+		return customer;
+	}
+
+	private Customer editAddress(Customer customer) {
+		// TODO Auto-generated method stub
+		System.out.println("Edit address placeholder");
+		return customer;
+	}
+
 
 }

@@ -267,8 +267,7 @@ public class CustomerMenuView implements MenuView {
 	 * Method will not return until a validate choice has been made
 	 * @return
 	 * <ul>
-	 * 	<li>{@value #ALL_ORDERS} : display all orders associated with customer
-	 *	<li>{@value #ORDERS_IN_RANGE} : display all orders within a date range
+	 * 	<li>{@value #ORDERS} : Access customer's orders
 	 *	<li>{@value #EDIT_ID} : edit the customer's ID
 	 *	<li>{@value #EDIT_NAME} : edit the customer's name
 	 *	<li>{@value #EDIT_ADDRESS} : edit the customer's address
@@ -292,8 +291,7 @@ public class CustomerMenuView implements MenuView {
 	 * @param input the String input by the user
 	 * @return
 	 * <ul>
-	 * 	<li>{@value #ALL_ORDERS} : display all orders associated with customer
-	 *	<li>{@value #ORDERS_IN_RANGE} : display all orders within a date range
+	 * 	<li>{@value #ORDERS} : Access customer's orders
 	 *	<li>{@value #EDIT_ID} : edit the customer's ID
 	 *	<li>{@value #EDIT_NAME} : edit the customer's name
 	 *	<li>{@value #EDIT_ADDRESS} : edit the customer's address
@@ -315,5 +313,25 @@ public class CustomerMenuView implements MenuView {
 
 		}
 		return choice;
+	}
+
+	/**
+	 * Report an aborted edit of a Customer field
+	 * @param message specifies the field which was being edit. Set to null for default message 
+	 */
+	public void abortEdit(String message) {
+		if(message == null) {
+			System.out.println("Edit customer aborted");
+		}
+		else {
+			System.out.println("Edit " + message + " aborted");
+		}
+		
+	}
+
+	public boolean confirmEdit(Customer customer, Customer updatedCustomer) {
+		System.out.println(String.format("Really change?\nOriginal: %s\nNew: %s",
+				customer.toString(), updatedCustomer.toString()));
+		return Input.getConfirmation();
 	}
 }

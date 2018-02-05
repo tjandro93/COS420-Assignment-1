@@ -34,4 +34,16 @@ public interface CustomerRepository {
 	 * @return list of all Customer's in system
 	 */
 	public List<Customer> getAll();
+
+	/**
+	 * Remove the Customer with the given ID from the system
+	 * @param id the ID of the customer to delete
+	 */
+	public void deleteById(long id);
+
+	/**
+	 * Update an existing Customer in the system
+	 * @param updatedCustomer the altered Customer instance. Must have the original ID for the change to be correct
+	 */
+	public void updateCustomer(Customer updatedCustomer);
 }
