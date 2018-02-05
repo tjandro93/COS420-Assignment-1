@@ -245,6 +245,10 @@ public class InventoryMenuView implements MenuView {
 		
 	}
 	
+	/**
+	 * 
+	 * @param items
+	 */
 	public void displayAllItems(List<InventoryItem> items){
 		System.out.println(items.size() + " items:");
 		for(InventoryItem i : items){
