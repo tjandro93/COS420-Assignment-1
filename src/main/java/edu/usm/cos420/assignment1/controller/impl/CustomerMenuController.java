@@ -16,7 +16,7 @@ public class CustomerMenuController implements MenuController{
 
 	private CustomerMenuView view;
 	private CustomerRepository repository;
-	
+
 	/**
 	 * Constructor: parameters provided to link View and Repository references
 	 * @param view CustomerMenuView for menu UI
@@ -35,7 +35,7 @@ public class CustomerMenuController implements MenuController{
 		this.repository = repository;
 		this.view = new CustomerMenuView(repository);
 	}
-	
+
 	/**
 	 * Display main menu, get user input, and branch on input
 	 */
@@ -60,8 +60,11 @@ public class CustomerMenuController implements MenuController{
 		case CustomerMenuView.ADD_CUSTOMER:
 			addCustomer();
 			break;
-		case CustomerMenuView.FIND_CUSTOMER:
-			System.out.println("Find customer placeholder");
+		case CustomerMenuView.FIND_CUSTOMER_NAME:
+			findCustomerByName();
+			break;
+		case CustomerMenuView.FIND_CUSTOMER_ID:
+			findCustomerById();
 			break;
 		case CustomerMenuView.LIST_CUSTOMERS:
 			listCustomers();
@@ -70,7 +73,7 @@ public class CustomerMenuController implements MenuController{
 			break;
 		}
 	}
-	
+
 	/**
 	 * Add a customer to the system 
 	 */
@@ -100,7 +103,7 @@ public class CustomerMenuController implements MenuController{
 		else{
 			view.abortAdd();
 		}
-		
+
 	}
 
 	/**
@@ -111,5 +114,58 @@ public class CustomerMenuController implements MenuController{
 		List<Customer> allCustomers = repository.getAll();
 		view.displayAllCustomers(allCustomers);
 	}
+
+	/**
+	 * Find a Customer in the System by name
+	 */
+	private void findCustomerByName() {
+		System.out.println();
+		String custName = view.getNameInput();
+		boolean validCustomer = false;
+		while(!validCustomer) {
+			
+			if(custName.equals(String.valueOf(CustomerMenuView.EXIT))) {
+				view.abortLookup();
+				return;
+			}
+			
+			List<Customer> customers = repository.findCustomersByName(custName);
+			if(customers == null || customers.isEmpty()) {
+				view.customerNotFound(custName);
+			}
+			else if(customers.size() > 1) {
+				view.multipleCustomersFound(customers);
+			}
+			else {
+				validCustomer = true;
+				lookupMenu(customers.get(0));
+			}
+			custName = view.getNameInput();
+		}
+	}
+
+	/**
+	 * Find a Customer in the system by ID
+	 */
+	private void findCustomerById() {
+		System.out.println();
+		int custId = view.getIdInput(false);
+		Customer customer = repository.findCustomersById(custId);
+		while(customer == null) {
+			view.customerNotFound(Integer.toString(custId));
+			custId = view.getIdInput(false);
+			customer = repository.findCustomersById(custId);
+		}
+		lookupMenu(customer);
+	}
+
+	/**
+	 * Provide access to options once a Customer has been looked up in the system
+	 * @param customer the customer found by findCustomerByName() or findCustomerByID()
+	 */
+	private void lookupMenu(Customer customer) {
+		System.out.println("Lookup menu placeholder for customer = " + customer.toString());
+	}
+	
 
 }

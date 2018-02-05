@@ -17,10 +17,12 @@ public class CustomerMenuView implements MenuView {
 	public static final int NO_CHOICE = -1;
 	/** {@value #ADD_CUSTOMER } : add a customer to the system*/
 	public static final int ADD_CUSTOMER = 1;
-	/** {@value #FIND_CUSTOMER } : find a customer in the system*/
-	public static final int FIND_CUSTOMER = 2;
+	/** {@value #FIND_CUSTOMER_NAME } : find a customer by name*/
+	public static final int FIND_CUSTOMER_NAME = 2;
+	/**	{@value #FIND_CUSTOMER_ID } : find a customer by ID*/
+	public static final int FIND_CUSTOMER_ID = 3;
 	/** {@value #LIST_CUSTOMERS } : list all customers in the system*/
-	public static final int LIST_CUSTOMERS = 3;
+	public static final int LIST_CUSTOMERS = 4;
 	/** {@value #EXIT } : exit the customer menu (returning to the main menu)*/
 	public static final int EXIT = 0;
 
@@ -51,7 +53,8 @@ public class CustomerMenuView implements MenuView {
 		System.out.println();
 		System.out.println("Enter the number denoting the action desired");
 		System.out.println("Add new Customer.............." + ADD_CUSTOMER);
-		System.out.println("Look up Customer.............." + FIND_CUSTOMER);
+		System.out.println("Look up Customer by name......" + FIND_CUSTOMER_NAME);
+		System.out.println("Look up Customer by ID........" + FIND_CUSTOMER_ID);
 		System.out.println("List all Customers............" + LIST_CUSTOMERS);
 		System.out.println("Exit.........................." + EXIT);
 	}
@@ -63,7 +66,7 @@ public class CustomerMenuView implements MenuView {
 	 * @return
 	 * <ul>
 	 * 	<li>{@value #ADD_CUSTOMER} : Add a customer to the system
-	 *	<li>{@value #FIND_CUSTOMER} : Find a customer in the system
+	 *	<li>{@value #FIND_CUSTOMER_NAME} : Find a customer in the system
 	 *	<li>{@value #LIST_CUSTOMERS} : List all customers in the system
 	 *	<li>{@value #EXIT} : Exit the customer menu
 	 * </ul>
@@ -86,7 +89,7 @@ public class CustomerMenuView implements MenuView {
 	 * @return
 	 * <ul>
 	 * 	<li>{@value #ADD_CUSTOMER} : Add a customer to the system
-	 *	<li>{@value #FIND_CUSTOMER} : Find a customer in the system
+	 *	<li>{@value #FIND_CUSTOMER_NAME} : Find a customer in the system
 	 *	<li>{@value #LIST_CUSTOMERS} : List all customers in the system
 	 *	<li>{@value #EXIT} : Exit the customer menu
 	 *	<li>{@value #NO_CHOICE} : returned if input is an invalid action
@@ -100,7 +103,7 @@ public class CustomerMenuView implements MenuView {
 		catch(NumberFormatException e){
 			System.out.println(input + " is not a valid action");
 		}
-		if (choice != ADD_CUSTOMER && choice != FIND_CUSTOMER && choice != LIST_CUSTOMERS && choice != EXIT){
+		if (choice != ADD_CUSTOMER && choice != FIND_CUSTOMER_ID &&choice != FIND_CUSTOMER_NAME && choice != LIST_CUSTOMERS && choice != EXIT){
 			System.out.println(input + " is not a valid action");
 
 		}
@@ -194,6 +197,13 @@ public class CustomerMenuView implements MenuView {
 	}
 	
 	/**
+	 * Report that a Customer could not be found in the system
+	 */
+	public void customerNotFound(String message) {
+		System.out.println("The customer " + message + " could not be found");
+	}
+	
+	/**
 	 * Display a list Customers
 	 * @param customers the list of Customers to display
 	 */
@@ -203,11 +213,30 @@ public class CustomerMenuView implements MenuView {
 			System.out.println(c.toString());
 		}
 	}
+	
+	/**
+	 * Display that multiple customers were found on lookup
+	 */
+	public void multipleCustomersFound(List<Customer> customers) {
+		System.out.println(customers.size() + " customers were found with the given name");
+		System.out.println("Please abort lookup by name and lookup by ID instead");
+		for(Customer c : customers) {
+			System.out.println(c.toString());
+		}
+	}
 
 	/**
 	 * Display abort message for adding Customers
 	 */
 	public void abortAdd() {
 		System.out.println("Add customer aborted");
+	}
+
+	/** 
+	 * Display abort message for lookup of Customers
+	 */
+	public void abortLookup() {
+		System.out.println("Lookup customer aborted");
+		
 	}
 }
