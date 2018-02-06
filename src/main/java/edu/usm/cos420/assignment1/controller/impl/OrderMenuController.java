@@ -14,7 +14,6 @@ import edu.usm.cos420.assignment1.service.InventoryRepository;
 import edu.usm.cos420.assignment1.service.OrderRepository;
 import edu.usm.cos420.assignment1.service.impl.CustomerRepositoryImpl;
 import edu.usm.cos420.assignment1.service.impl.InventoryRepositoryImpl;
-import edu.usm.cos420.assignment1.service.impl.OrderRepositoryImpl;
 import edu.usm.cos420.assignment1.view.impl.CustomerMenuView;
 import edu.usm.cos420.assignment1.view.impl.OrderMenuView;
 
@@ -24,20 +23,18 @@ import edu.usm.cos420.assignment1.view.impl.OrderMenuView;
 public class OrderMenuController implements MenuController {
 
 	private Customer customer;
-	private OrderRepository orderRepository;
 	private InventoryRepository inventoryRepository;
 	private CustomerRepository customerRepository;
 	private OrderMenuView view;
 
 	/**
-	 * Default constructor. Sets Customer field to null, initializes OrderRepository 
+	 * Default constructor. Sets Customer field to null, initializes CustomerRepository and InventoryRepository by default constructors
 	 * and OrderMenuView
 	 */
 	public OrderMenuController() {
 		
 		this.customer = null;
-		this.orderRepository = new OrderRepositoryImpl();
-		this.view = new OrderMenuView(this.orderRepository);
+		this.view = new OrderMenuView();
 		this.inventoryRepository = new InventoryRepositoryImpl();
 		this.customerRepository = new CustomerRepositoryImpl();
 	}
@@ -45,28 +42,25 @@ public class OrderMenuController implements MenuController {
 	/**
 	 * Constructor: uses provided Customer and OrderRepository
 	 * @param customer the Customer the menu is working on
-	 * @param orderRepository the repository for Orders
 	 * @param inventoryRepository the repository for InventoryItems
 	 * @param customerRepository the repository for Customers
 	 */
-	public OrderMenuController(Customer customer, OrderRepository orderRepository, InventoryRepository inventoryRepository, CustomerRepository customerRepository) {
+	public OrderMenuController(Customer customer, InventoryRepository inventoryRepository, CustomerRepository customerRepository) {
 		this.customer = customer;
-		this.orderRepository = orderRepository;
 		this.inventoryRepository = inventoryRepository;
-		this.view = new OrderMenuView(this.orderRepository);
+		this.view = new OrderMenuView();
 		this.customerRepository = customerRepository;
 	}
 
 	/**
 	 * Constructor: uses provided OrderRepository
-	 * @param orderRepository the repository to use for Orders
 	 * @param inventoryRepository the repository to use for InventoryItems
+	 * @param customerRepository  the repository to use for Customers
 	 */
-	public OrderMenuController(OrderRepository orderRepository, InventoryRepository inventoryRepository, CustomerRepository customerRepository) {
+	public OrderMenuController(InventoryRepository inventoryRepository, CustomerRepository customerRepository) {
 		this.customer = null;
 		this.inventoryRepository = inventoryRepository;
-		this.orderRepository = orderRepository;
-		this.view = new OrderMenuView(this.orderRepository);
+		this.view = new OrderMenuView();
 		this.customerRepository = customerRepository;
 	}
 
@@ -110,7 +104,7 @@ public class OrderMenuController implements MenuController {
 	 * Add an Order to the current Customer
 	 */
 	private void addOrder() {
-		int orderId = view.getIdInput(true);
+		int orderId = view.getIdInput();
 		if(orderId == OrderMenuView.EXIT){
 			view.abortAdd();
 			return;

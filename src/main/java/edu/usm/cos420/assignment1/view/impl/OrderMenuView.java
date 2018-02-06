@@ -6,7 +6,6 @@ import java.util.List;
 import edu.usm.cos420.assignment1.domain.InventoryItem;
 import edu.usm.cos420.assignment1.domain.Order;
 import edu.usm.cos420.assignment1.service.OrderRepository;
-import edu.usm.cos420.assignment1.service.impl.OrderRepositoryImpl;
 import edu.usm.cos420.assignment1.util.Input;
 import edu.usm.cos420.assignment1.view.MenuView;
 import edu.usm.cos420.assignment1.domain.Customer;
@@ -27,23 +26,13 @@ public class OrderMenuView implements MenuView {
 	/** {@value #EXIT } : exit the customer menu (returning to the main menu)*/
 	public static final int EXIT = 0;
 	
-	private OrderRepository repository;
 	private Customer currentCustomer;
 	
 	/**
-	 * Default constructor: creates a new OrderRepository
+	 * Default constructor
 	 */
-	public OrderMenuView(){
-		this.repository = new OrderRepositoryImpl();
-	}
+	public OrderMenuView(){	}
 	
-	/**
-	 * Constructor: uses the supplied OrderRepository
-	 * @param repository the repository to use
-	 */
-	public OrderMenuView(OrderRepository repository){
-		this.repository = repository;
-	}
 	
 	public Customer getCustomer(){
 		return this.currentCustomer;
@@ -119,15 +108,14 @@ public class OrderMenuView implements MenuView {
 	
 	/**
 	 * Get user input for an Order ID
-	 * @param checkId set to true to check the ID is not yet used
 	 * @return either a valid Order ID or 
 	 * {@value #EXIT} if the user wishes to abort the operation
 	 */
-	public int getIdInput(boolean checkId){
+	public int getIdInput(){
 		System.out.println("Enter 6-digit Order ID or 0 to abort");
 		int idInt;
 		String idStr = Input.readLine();
-		while((idInt = validateId(idStr, checkId)) == NO_CHOICE){
+		while((idInt = validateId(idStr)) == NO_CHOICE){
 			idStr = Input.readLine();
 		}
 		return idInt;
@@ -135,14 +123,12 @@ public class OrderMenuView implements MenuView {
 
 	/**
 	 * Validate the input Order ID to ensure it is 6 Digits
-	 * and is not already being used
 	 * @param idStr the input from the user
-	 * @param checkId set to true to check the ID is not yet used
 	 * @return a valid ID number,
 	 *  {@code #EXIT} if the user wishes to abort the operation,
 	 *  or {@code #NO_CHOICE} if the input is invalid
 	 */
-	private int validateId(String idStr, boolean checkId) {
+	private int validateId(String idStr) {
 		int idNum = NO_CHOICE;
 		if(idStr.equals("0")){
 			return EXIT;
@@ -150,22 +136,15 @@ public class OrderMenuView implements MenuView {
 		if (idStr.length() == 6){
 			try{
 				idNum = Integer.parseInt(idStr);
+				return idNum;
 			}
 			catch (NumberFormatException e){
 				System.out.println(idStr + " is not a valid ID");
+				return NO_CHOICE;
 			}
 		}
 		else{
-			System.out.println(idStr + " is not a valid ID");
 			return NO_CHOICE;
-		}
-		if(checkId && repository.findOrdersById(idNum) != null){
-			System.out.println("An Order with ID " + idNum + " is already in the system");
-			return NO_CHOICE;
-		}
-		else{
-
-			return idNum;
 		}
 	}
 
@@ -186,7 +165,7 @@ public class OrderMenuView implements MenuView {
 		System.out.println("Enter an item ID to order or 0 to abort");
 		int itemId;
 		String idStr = Input.readLine();
-		while((itemId = validateId(idStr, false)) == NO_CHOICE){
+		while((itemId = validateId(idStr)) == NO_CHOICE){
 			idStr = Input.readLine();
 		}
 		return itemId;

@@ -9,7 +9,6 @@ import edu.usm.cos420.assignment1.domain.Customer;
 import edu.usm.cos420.assignment1.service.CustomerRepository;
 import edu.usm.cos420.assignment1.service.OrderRepository;
 import edu.usm.cos420.assignment1.service.InventoryRepository;
-import edu.usm.cos420.assignment1.service.impl.OrderRepositoryImpl;
 import edu.usm.cos420.assignment1.util.Input;
 
 /**
@@ -20,7 +19,6 @@ public class CustomerMenuController implements MenuController{
 	private CustomerMenuView view;
 	private CustomerRepository customerRepository;
 	private OrderMenuController orderMenuController;
-	private OrderRepository orderRepository;
 	private InventoryRepository inventoryRepository;
 
 	/**
@@ -32,9 +30,8 @@ public class CustomerMenuController implements MenuController{
 	public CustomerMenuController(CustomerMenuView view, CustomerRepository customerRepository, InventoryRepository inventoryRepository){
 		this.view = view;
 		this.customerRepository = customerRepository;
-		this.orderRepository = new OrderRepositoryImpl();
 		this.inventoryRepository = inventoryRepository;
-		this.orderMenuController = new OrderMenuController(this.orderRepository, this.inventoryRepository, this.customerRepository);
+		this.orderMenuController = new OrderMenuController(this.inventoryRepository, this.customerRepository);
 	}
 
 	/**
@@ -45,9 +42,8 @@ public class CustomerMenuController implements MenuController{
 	public CustomerMenuController(CustomerRepository customerRepository, InventoryRepository inventoryRepository){
 		this.customerRepository = customerRepository;
 		this.view = new CustomerMenuView(customerRepository);
-		this.orderRepository = new OrderRepositoryImpl();
 		this.inventoryRepository = inventoryRepository;
-		this.orderMenuController = new OrderMenuController(this.orderRepository, this.inventoryRepository, this.customerRepository);
+		this.orderMenuController = new OrderMenuController(this.inventoryRepository, this.customerRepository);
 	}
 
 	/**
