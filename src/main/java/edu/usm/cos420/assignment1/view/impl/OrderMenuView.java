@@ -1,5 +1,6 @@
 package edu.usm.cos420.assignment1.view.impl;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import edu.usm.cos420.assignment1.domain.InventoryItem;
@@ -240,9 +241,109 @@ public class OrderMenuView implements MenuView {
 
 	public void listOrders(Customer customer, List<Order> allOrders) {
 		System.out.println();
-		System.out.println("Orders for  " + customer.toString());
+		System.out.println("Orders for Customer " + customer.toString());
 		for(Order order : allOrders) {
 			System.out.println(order.toString());
 		}
 	}
+
+	/**
+	 * Report to user abort of lookup operation
+	 */
+	public void abortLookup() {
+		System.out.println("Lookup aborted");
+	}
+
+	/**
+	 * Prompt and get a year for the order to lookup
+	 * @return a valid year for an Order, or {@value #EXIT} if the user wants to exit
+	 */
+	public int getYearInput(String bound) {
+		System.out.println("Enter the "+ bound + " bound for year 0 to abort");
+		int year;
+		String yearStr = Input.readLine();
+		while((year = validateDate(yearStr, LocalDate.MIN.getYear(), LocalDate.MAX.getYear())) == NO_CHOICE) {
+			System.out.println(yearStr + " is not a valid year");
+			yearStr = Input.readLine();
+		}
+		return year;
+	}
+
+	/**
+	 * Prompt and get a month for the order to lookup
+	 * @return a valid month for an Order, or {@value #EXIT} if the user wants to exit
+	 */
+	public int getMonthInput(String bound) {
+		System.out.println("Enter the " + bound + " bound for month 0 to abort");
+		int month;
+		String monthStr = Input.readLine();
+		while((month = validateDate(monthStr, 0, 12)) == NO_CHOICE) {
+			System.out.println(monthStr + " is not a valid month");
+			monthStr = Input.readLine();
+		}
+		return month;
+	}
+
+	public int getDayInput(String bound) {
+		System.out.println("Enter the " + bound + " bound for day or 0 to abort");
+		int day;
+		String dayStr = Input.readLine();
+		while((day = validateDate(dayStr, 0, 31)) == NO_CHOICE) {
+			System.out.println(dayStr + " is not a valid day");
+			dayStr = Input.readLine();
+		}
+		return day;
+	}
+	
+	/**
+	 * Check if the input String is a valid number between lowValue and highValue
+	 * return the value as an int if it is, otherwise return {@value #NO_CHOICE}
+	 * 
+	 * @param yearStr the input to parse
+	 * @param lowValue the lowest valid value for the date (inclusive)
+	 * @param highValue the highest valid value for the date (inclusive)
+	 * @return a valid date int between lowValue and highValue, 
+	 * or {@value #NO_CHOICE} if the input is invalid
+	 */
+	private int validateDate(String yearStr, int lowValue, int highValue) {
+		int dateInt = NO_CHOICE;
+		try {
+			dateInt = Integer.parseInt(yearStr);
+		}
+		catch(NumberFormatException e){
+			return NO_CHOICE;
+		}
+		if(dateInt < lowValue || dateInt > highValue) {
+			return NO_CHOICE;
+		}
+		else {
+			return dateInt;
+		}
+	}
+
+	public void invalidDate(int year, int month, int day) {
+		System.out.println(year + "-" + month + "-" + day + " is not a valid date");
+	}
+
+	/**
+	 * Inform to user that the Dates entered are reversed
+	 * @param toDate the upper bound for the date
+	 * @param fromDate the lower bound for the date
+	 */
+	public void wrongDateOrder(LocalDate toDate, LocalDate fromDate) {
+		System.out.println(toDate + " is before " + fromDate+ ". Please try again");
+	}
+
+	public void noOrdersFound(Customer customer, LocalDate fromDate, LocalDate toDate) {
+		System.out.println("No orders for " + customer + " were found between " + fromDate + " and " + toDate);
+	}
+
+	public void listOrdersInRange(Customer customer, List<Order> ordersInRange, LocalDate fromDate, LocalDate toDate) {
+		System.out.println("Between " + fromDate + " and " + toDate);
+		System.out.println("For Customer " + customer);
+		for(Order order : ordersInRange) {
+			System.out.println(order.toString());
+		}
+	}
+	
 }

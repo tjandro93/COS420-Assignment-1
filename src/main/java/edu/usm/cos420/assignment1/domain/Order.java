@@ -3,6 +3,7 @@ package edu.usm.cos420.assignment1.domain;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.Serializable;
+import java.time.LocalDate;
 
 
 /**
@@ -16,10 +17,34 @@ public class Order implements Serializable{
 	
 	private long id;
 	private List<InventoryItem> orderItems;
+	private LocalDate orderDate;
 	
+	/**
+	 * Constructor
+	 * @param id the ID of the order
+	 * @param orderItems all InventoryItems to be ordered
+	 */
 	public Order(int id, List<InventoryItem> orderItems){
 		this.id = id;
 		this.orderItems = orderItems;
+		this.orderDate = LocalDate.now();
+	}
+	
+	/**
+	 * Change the orderDate to be today
+	 * @return
+	 */
+	public LocalDate resetOrderDate() {
+		this.orderDate = LocalDate.now();
+		return this.orderDate;
+	}
+	
+	/**
+	 * Get the orderDate
+	 * @return the date the Order was made
+	 */
+	public LocalDate getOrderDate() {
+		return this.orderDate;
 	}
 	
 	public Order(int id){
@@ -59,9 +84,22 @@ public class Order implements Serializable{
 		this.orderItems = orderItems;
 	}
 	
+	/**
+	 * Simple toString to return the Order as a string
+	 * Formated as follows.<p>
+	 * Order ID: /<ID/> <p>
+	 * Items:<p>
+	 * /<item1.toString()/><p>
+	 * /<item2.toString()/><p>
+	 * ...<p>
+	 * 
+	 */
+	@Override
 	public String toString(){
 		StringBuilder sb = new StringBuilder("Order ID: ");
 		sb.append(id);
+		sb.append(" Date: ");
+		sb.append(orderDate);
 		sb.append("\nItems:\n");
 		for(InventoryItem item : orderItems){
 			sb.append("\t");

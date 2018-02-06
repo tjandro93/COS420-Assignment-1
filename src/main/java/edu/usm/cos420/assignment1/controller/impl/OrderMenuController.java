@@ -1,5 +1,7 @@
 package edu.usm.cos420.assignment1.controller.impl;
 
+import java.time.DateTimeException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -164,14 +166,85 @@ public class OrderMenuController implements MenuController {
 				return null;
 			}
 		}
-		
+
 		InventoryItem orderItem = new InventoryItem(stockItem.getId(), stockItem.getName(), 
 				stockItem.getDescription(), quantityToOrder);
 		return orderItem;
 	}
 
 	private void ordersInRange() {
-		System.out.println("order in range placeholder");
+		int year, month, day;
+		LocalDate fromDate = LocalDate.now(),
+				toDate = LocalDate.now();
+		boolean validDate = false;
+		do {
+			if((year = view.getYearInput("lower")) == OrderMenuView.EXIT) {
+				view.abortLookup();
+				return;
+			}
+			if((month = view.getMonthInput("lower")) == OrderMenuView.EXIT) {
+				view.abortLookup();
+				return;
+			}
+			if((day = view.getDayInput("lower")) == OrderMenuView.EXIT) {
+				view.abortLookup();
+				return;
+			}
+			try {
+				fromDate = LocalDate.of(year, month, day);
+				validDate = true;
+			}
+			catch (DateTimeException e) {
+				view.invalidDate(year, month, day);
+				validDate = false;
+			}
+		} while(!validDate);
+		
+		validDate = false;
+		
+		do {
+			if((year = view.getYearInput("upper")) == OrderMenuView.EXIT) {
+				view.abortLookup();
+				return;
+			}
+			if((month = view.getMonthInput("upper")) == OrderMenuView.EXIT) {
+				view.abortLookup();
+				return;
+			}
+			if((day = view.getDayInput("upper")) == OrderMenuView.EXIT) {
+				view.abortLookup();
+				return;
+			}
+			try {
+				toDate = LocalDate.of(year, month, day);
+				validDate = true;
+			}
+			catch (DateTimeException e) {
+				view.invalidDate(year, month, day);
+				validDate = false;
+			}
+		} while(!validDate);
+		
+		if(toDate.isBefore(fromDate)) {
+			view.wrongDateOrder(toDate, fromDate);
+			return;
+		}
+		
+		List<Order> ordersInRange = new ArrayList<>();
+		for(Order order : customer.getOrders()) {
+			LocalDate currOrderDate = order.getOrderDate();
+			if(currOrderDate.isEqual(toDate) || currOrderDate.isEqual(fromDate)) {
+				ordersInRange.add(order);
+			}
+			else if(currOrderDate.isAfter(fromDate) && currOrderDate.isBefore(toDate)){
+				ordersInRange.add(order);				
+			}
+		}
+		if(ordersInRange.isEmpty()) {
+			view.noOrdersFound(customer, fromDate, toDate);
+			return;
+		}
+		view.listOrdersInRange(customer, ordersInRange, fromDate, toDate);
 	}
 
 	private void listOrders() {
