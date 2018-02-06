@@ -8,6 +8,7 @@ import edu.usm.cos420.assignment1.service.OrderRepository;
 import edu.usm.cos420.assignment1.service.impl.OrderRepositoryImpl;
 import edu.usm.cos420.assignment1.util.Input;
 import edu.usm.cos420.assignment1.view.MenuView;
+import edu.usm.cos420.assignment1.domain.Customer;
 
 /**
  * View class to display and receive order menu choices
@@ -235,5 +236,13 @@ public class OrderMenuView implements MenuView {
 	public boolean orderConfirm(Order newOrder) {
 		System.out.println("Really place order?\n" + newOrder.toString());
 		return Input.getConfirmation();
+	}
+
+	public void listOrders(Customer customer, List<Order> allOrders) {
+		System.out.println();
+		System.out.println("Orders for  " + customer.toString());
+		for(Order order : allOrders) {
+			System.out.println(order.toString());
+		}
 	}
 }
