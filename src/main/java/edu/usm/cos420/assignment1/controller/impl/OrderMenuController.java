@@ -23,7 +23,6 @@ import edu.usm.cos420.assignment1.view.impl.OrderMenuView;
  */
 public class OrderMenuController implements MenuController {
 
-	//TODO refactor to remove InventoryRepository
 	private Customer customer;
 	private OrderRepository orderRepository;
 	private InventoryRepository inventoryRepository;
@@ -35,6 +34,7 @@ public class OrderMenuController implements MenuController {
 	 * and OrderMenuView
 	 */
 	public OrderMenuController() {
+		
 		this.customer = null;
 		this.orderRepository = new OrderRepositoryImpl();
 		this.view = new OrderMenuView(this.orderRepository);
@@ -77,6 +77,7 @@ public class OrderMenuController implements MenuController {
 	public void provideMenuAccess() {
 		int choice = CustomerMenuView.NO_CHOICE;
 		while(choice != CustomerMenuView.EXIT){
+			view.setCustomer(customer);
 			view.displayMainMenu();
 			choice = view.getMainMenuChoice();
 			executeChoice(choice);

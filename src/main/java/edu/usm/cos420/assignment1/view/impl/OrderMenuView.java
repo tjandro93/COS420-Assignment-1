@@ -28,6 +28,7 @@ public class OrderMenuView implements MenuView {
 	public static final int EXIT = 0;
 	
 	private OrderRepository repository;
+	private Customer currentCustomer;
 	
 	/**
 	 * Default constructor: creates a new OrderRepository
@@ -44,11 +45,21 @@ public class OrderMenuView implements MenuView {
 		this.repository = repository;
 	}
 	
+	public Customer getCustomer(){
+		return this.currentCustomer;
+	}
+	
+	public void setCustomer(Customer c){
+		this.currentCustomer = c;
+	}
+	
 	/**
 	 * Display menu options to user
 	 */
 	@Override
 	public void displayMainMenu() {
+		System.out.println();
+		System.out.println("Customer " + currentCustomer.toString());
 		System.out.println("Add order....................." + ADD_ORDER);
 		System.out.println("List all orders..............." + LIST_ORDERS);
 		System.out.println("Find orders by date..........." + ORDERS_IN_RANGE);

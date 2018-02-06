@@ -253,7 +253,8 @@ public class CustomerMenuView implements MenuView {
 	 * @param customer The customer which is being accessed or changed
 	 */
 	public void displayLookupMenu(Customer customer) {
-		System.out.println(customer.toString());
+		System.out.println();
+		System.out.println("Customer " + customer.toString());
 		System.out.println("Access customer orders........" + ORDERS);;
 		System.out.println("Edit customer ID ............." + EDIT_ID);
 		System.out.println("Edit customer name............" + EDIT_NAME);
