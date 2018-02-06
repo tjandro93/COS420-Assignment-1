@@ -113,10 +113,10 @@ public class OrderMenuController implements MenuController {
 			return;
 		}
 		List<InventoryItem> orderItems = new ArrayList<>();
-		InventoryItem itemToAdd = getOrderItem();
-		while(itemToAdd != null){
-			orderItems.add(itemToAdd);
-			itemToAdd = getOrderItem();
+		InventoryItem orderItem = getOrderItem();
+		while(orderItem != null){
+			orderItems.add(orderItem);
+			orderItem = getOrderItem();
 		}
 		if(orderItems.isEmpty()){
 			view.abortAdd();
@@ -126,6 +126,11 @@ public class OrderMenuController implements MenuController {
 		if(view.orderConfirm(newOrder)){
 			customer.addToOrders(newOrder);
 			customerRepository.updateCustomer(customer);
+			for(InventoryItem item : orderItems){
+				InventoryItem currItem = inventoryRepository.findItemById(item.getId());
+				currItem.decrementQuantity(item.getQuantity());
+				inventoryRepository.updateItem(currItem);
+			}
 		}
 		else{
 			view.abortAdd();
@@ -141,8 +146,8 @@ public class OrderMenuController implements MenuController {
 		if(itemId == OrderMenuView.EXIT){
 			return null;
 		}
-		InventoryItem inventoryItem;
-		while((inventoryItem = inventoryRepository.findItemById(itemId)) == null) {
+		InventoryItem stockItem;
+		while((stockItem = inventoryRepository.findItemById(itemId)) == null) {
 			view.itemNotFound(itemId);
 			itemId = view.getItemIdInput();
 			if(itemId == OrderMenuView.EXIT){
@@ -153,16 +158,15 @@ public class OrderMenuController implements MenuController {
 		if(quantityToOrder == OrderMenuView.EXIT){
 			return null;
 		}
-		while(quantityToOrder > inventoryItem.getQuantity()){
-			quantityToOrder = view.invalidQuantity(quantityToOrder, inventoryItem.getQuantity());
+		while(quantityToOrder > stockItem.getQuantity()){
+			quantityToOrder = view.invalidQuantity(quantityToOrder, stockItem.getQuantity());
 			if(quantityToOrder == OrderMenuView.EXIT){
 				return null;
 			}
 		}
 		
-		InventoryItem orderItem = new InventoryItem(inventoryItem.getId(), inventoryItem.getName(), 
-				inventoryItem.getDescription(), quantityToOrder);
-		
+		InventoryItem orderItem = new InventoryItem(stockItem.getId(), stockItem.getName(), 
+				stockItem.getDescription(), quantityToOrder);
 		return orderItem;
 	}
 
