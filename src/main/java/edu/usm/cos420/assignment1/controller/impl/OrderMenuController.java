@@ -175,7 +175,8 @@ public class OrderMenuController implements MenuController {
 	}
 
 	private void listOrders() {
-		System.out.println("List orders placeholder");	
+		List<Order> allOrders = customer.getOrders();
+		view.listOrders(customer, allOrders);
 	}
 
 	/**
