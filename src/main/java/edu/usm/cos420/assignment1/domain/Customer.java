@@ -1,6 +1,8 @@
 package edu.usm.cos420.assignment1.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A domain class to represent a customer of the shop
@@ -19,6 +21,7 @@ public class Customer implements Serializable{
 		private long id;
 		private String name;
 		private String address;
+		private List<Order> orders;
 		
 		/**
 		 * Parameterized constructor
@@ -32,6 +35,7 @@ public class Customer implements Serializable{
 			this.id = id;
 			this.address = address;
 			this.name = name;
+			this.orders = new ArrayList<>();
 		}
 		
 		public String toString(){
@@ -83,6 +87,30 @@ public class Customer implements Serializable{
 		 */
 		public void setName(String name) {
 			this.name = name;
+		}
+
+		/**
+		 * Get the list of the Orders for the Customer
+		 * @return the orders
+		 */
+		public List<Order> getOrders() {
+			return orders;
+		}
+
+		/**
+		 * Change the list of Orders for the Customer
+		 * @param orders the orders to set
+		 */
+		public void setOrders(List<Order> orders) {
+			this.orders = orders;
+		}
+		
+		/**
+		 * Add an Order to the Customers Order list
+		 * @param order the Order to add
+		 */
+		public void addToOrders(Order order){
+			this.orders.add(order);
 		}
 		
 }

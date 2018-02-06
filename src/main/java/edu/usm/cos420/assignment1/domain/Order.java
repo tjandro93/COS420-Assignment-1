@@ -1,27 +1,30 @@
 package edu.usm.cos420.assignment1.domain;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 import java.io.Serializable;
 
 
 /**
  * A model class to represent an order made by a customer
  * <p>
- * Contains an id field to identify each instance and 
- * a map of InventoryItem ID's to the quantity desired
+ * Contains an id field and a list of Integers of InventoryItem IDs
  */
 public class Order implements Serializable{
 
 	private static final long serialVersionUID = -4229245226118800982L;
-	public static int nextId;
 	
 	private long id;
-	private Map<Long, Long> orderItems;
+	private List<InventoryItem> orderItems;
 	
-	public Order() {
-		id  = nextId;
-		orderItems = new HashMap<Long, Long>();
+	public Order(int id, List<InventoryItem> orderItems){
+		this.id = id;
+		this.orderItems = orderItems;
+	}
+	
+	public Order(int id){
+		this.id = id;
+		this.orderItems = new ArrayList<>();
 	}
 
 	/**
@@ -44,7 +47,7 @@ public class Order implements Serializable{
 	 * Get the orderItems map
 	 * @return the orderItems
 	 */
-	public Map<Long, Long> getOrderItems() {
+	public List<InventoryItem> getOrderItems() {
 		return orderItems;
 	}
 
@@ -52,7 +55,19 @@ public class Order implements Serializable{
 	 * Set the orderItems map
 	 * @param orderItems the orderItems to set
 	 */
-	public void setOrderItems(Map<Long, Long> orderItems) {
+	public void setOrderItems(List<InventoryItem> orderItems) {
 		this.orderItems = orderItems;
+	}
+	
+	public String toString(){
+		StringBuilder sb = new StringBuilder("Order ID: ");
+		sb.append(id);
+		sb.append("\nItems:\n");
+		for(InventoryItem item : orderItems){
+			sb.append("\t");
+			sb.append(item.toString());
+			sb.append("\n");
+		}
+		return sb.toString();
 	}
 }

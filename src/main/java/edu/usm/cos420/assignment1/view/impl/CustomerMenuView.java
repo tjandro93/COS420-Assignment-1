@@ -70,7 +70,7 @@ public class CustomerMenuView implements MenuView {
 	/**
 	 * Read the menu choice from the user
 	 * <p>
-	 * Method will not return until a validate choice has been made
+	 * Method will not return until a valid choice has been made
 	 * @return
 	 * <ul>
 	 * 	<li>{@value #ADD_CUSTOMER} : Add a customer to the system
