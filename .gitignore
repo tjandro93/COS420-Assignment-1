@@ -61,6 +61,3 @@ bin/
 /*.ser
 /*.json
 
-# Ignore JavaDocs for now
-# REMOVE THIS BEFORE SUBMISSION
-doc/

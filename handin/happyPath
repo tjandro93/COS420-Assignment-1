@@ -1,0 +1,300 @@
+
+Enter the number denoting the action desired
+Customer Menu.................1
+Inventory Menu................2
+Exit..........................0
+Enter choice 1
+
+Enter the number denoting the action desired
+Add new Customer..............1
+Look up Customer by ID........2
+Look up Customer by name......3
+List all Customers............4
+Exit..........................0
+Enter choice 4
+
+3 customers:
+ID: 111111, Name: Teddy, Address: Kennebunk, ME
+ID: 222222, Name: Jeff, Address: Saco, ME
+ID: 333333, Name: Alex, Address: Orono, ME
+
+Enter the number denoting the action desired
+Add new Customer..............1
+Look up Customer by ID........2
+Look up Customer by name......3
+List all Customers............4
+Exit..........................0
+Enter choice 0
+
+
+Enter the number denoting the action desired
+Customer Menu.................1
+Inventory Menu................2
+Exit..........................0
+Enter choice 2
+
+Enter the number denoting the action desired
+Add new Inventory Item........1
+List all Inventory Items......2
+Edit an Inventory Item........3
+Exit..........................0
+Enter choice 2
+
+5 items:
+ID: 111111, Name: Rose, Quantity: 3, Info: Spiky and red
+ID: 222222, Name: Tulip, Quantity: 4, Info: Spring flowers
+ID: 333333, Name: Carnations, Quantity: 5, Info: tons of colors
+ID: 444444, Name: Orchid, Quantity: 6, Info: colorful and fragrant
+ID: 555555, Name: Sunflower, Quantity: 7, Info: Tasty seeds
+
+Enter the number denoting the action desired
+Add new Inventory Item........1
+List all Inventory Items......2
+Edit an Inventory Item........3
+Exit..........................0
+Enter choice 0
+
+
+Enter the number denoting the action desired
+Customer Menu.................1
+Inventory Menu................2
+Exit..........................0
+Enter choice 1
+
+Enter the number denoting the action desired
+Add new Customer..............1
+Look up Customer by ID........2
+Look up Customer by name......3
+List all Customers............4
+Exit..........................0
+Enter choice 1
+
+Enter 6-digit Customer ID or 0 to abort
+444444
+Enter a name for the Customer or 0 to abort
+Jen
+Enter the customer's address or 0 to abort
+Biddeford, ME
+You entered	ID: 444444, Name: Jen, Address: Biddeford, ME
+Enter Y to confirm
+y
+Customer saved
+
+Enter the number denoting the action desired
+Add new Customer..............1
+Look up Customer by ID........2
+Look up Customer by name......3
+List all Customers............4
+Exit..........................0
+Enter choice 0
+
+
+Enter the number denoting the action desired
+Customer Menu.................1
+Inventory Menu................2
+Exit..........................0
+Enter choice 2
+
+Enter the number denoting the action desired
+Add new Inventory Item........1
+List all Inventory Items......2
+Edit an Inventory Item........3
+Exit..........................0
+Enter choice 1
+
+Enter 6-digit Item ID or 0 to abort
+999999
+Enter a name for the item or 0 to abort
+Violet
+Enter a short description of the item or 0 to abort
+They really are purple
+Enter the initial quantity for the item or 0 to abort
+10
+You entered	 ID: 999999, Name: Violet, Quantity: 10, Info: They really are purple
+Enter Y to confirm
+y
+Item saved
+
+Enter the number denoting the action desired
+Add new Inventory Item........1
+List all Inventory Items......2
+Edit an Inventory Item........3
+Exit..........................0
+Enter choice 3
+
+Enter 6-digit Item ID or 0 to abort
+111111
+
+ID: 111111, Name: Rose, Quantity: 3, Info: Spiky and red
+Edit ID.......................4
+Edit name.....................5
+Edit quantity.................6
+Edit info.....................7
+Exit..........................0
+Enter choice 6
+Enter the initial quantity for the item or 0 to abort
+10
+Really change?
+Original: ID: 111111, Name: Rose, Quantity: 3, Info: Spiky and red
+New: ID: 111111, Name: Rose, Quantity: 10, Info: Spiky and red
+Enter Y to confirm
+y
+
+ID: 111111, Name: Rose, Quantity: 10, Info: Spiky and red
+Edit ID.......................4
+Edit name.....................5
+Edit quantity.................6
+Edit info.....................7
+Exit..........................0
+Enter choice 0
+
+Enter the number denoting the action desired
+Add new Inventory Item........1
+List all Inventory Items......2
+Edit an Inventory Item........3
+Exit..........................0
+Enter choice 0
+
+
+Enter the number denoting the action desired
+Customer Menu.................1
+Inventory Menu................2
+Exit..........................0
+Enter choice 1
+
+Enter the number denoting the action desired
+Add new Customer..............1
+Look up Customer by ID........2
+Look up Customer by name......3
+List all Customers............4
+Exit..........................0
+Enter choice 2
+
+Enter 6-digit Customer ID or 0 to abort
+111111
+
+
+Customer ID: 111111, Name: Teddy, Address: Kennebunk, ME
+Access customer orders........5
+Edit customer ID .............6
+Edit customer name............7
+Edit customer address.........8
+Exit..........................0
+Enter choice 5
+
+Customer ID: 111111, Name: Teddy, Address: Kennebunk, ME
+Add order.....................1
+List all orders...............2
+Find orders by date...........3
+Exit..........................0
+Enter choice 1
+Enter 6-digit Order ID or 0 to abort
+111111
+Enter an item ID to order or 0 to abort
+111111
+Enter the quantity to order or 0 to abort
+2
+Enter an item ID to order or 0 to abort
+333333
+Enter the quantity to order or 0 to abort
+2
+Enter an item ID to order or 0 to abort
+0
+Really place order?
+Order ID: 111111 Date: 2018-02-06
+Items:
+	ID: 111111, Name: Rose, Quantity: 2, Info: Spiky and red
+	ID: 333333, Name: Carnations, Quantity: 2, Info: tons of colors
+
+Enter Y to confirm
+y
+
+Customer ID: 111111, Name: Teddy, Address: Kennebunk, ME
+Add order.....................1
+List all orders...............2
+Find orders by date...........3
+Exit..........................0
+Enter choice 2
+
+Orders for Customer ID: 111111, Name: Teddy, Address: Kennebunk, ME
+Order ID: 111111 Date: 2018-02-06
+Items:
+	ID: 111111, Name: Rose, Quantity: 2, Info: Spiky and red
+	ID: 333333, Name: Carnations, Quantity: 2, Info: tons of colors
+
+
+Customer ID: 111111, Name: Teddy, Address: Kennebunk, ME
+Add order.....................1
+List all orders...............2
+Find orders by date...........3
+Exit..........................0
+Enter choice 0
+
+
+
+Customer ID: 111111, Name: Teddy, Address: Kennebunk, ME
+Access customer orders........5
+Edit customer ID .............6
+Edit customer name............7
+Edit customer address.........8
+Exit..........................0
+Enter choice 0
+Invalid option
+
+Enter the number denoting the action desired
+Add new Customer..............1
+Look up Customer by ID........2
+Look up Customer by name......3
+List all Customers............4
+Exit..........................0
+Enter choice 4
+
+4 customers:
+ID: 111111, Name: Teddy, Address: Kennebunk, ME
+ID: 222222, Name: Jeff, Address: Saco, ME
+ID: 333333, Name: Alex, Address: Orono, ME
+ID: 444444, Name: Jen, Address: Biddeford, ME
+
+Enter the number denoting the action desired
+Add new Customer..............1
+Look up Customer by ID........2
+Look up Customer by name......3
+List all Customers............4
+Exit..........................0
+Enter choice 0
+
+
+Enter the number denoting the action desired
+Customer Menu.................1
+Inventory Menu................2
+Exit..........................0
+Enter choice 2
+
+Enter the number denoting the action desired
+Add new Inventory Item........1
+List all Inventory Items......2
+Edit an Inventory Item........3
+Exit..........................0
+Enter choice 2
+
+6 items:
+ID: 111111, Name: Rose, Quantity: 8, Info: Spiky and red
+ID: 222222, Name: Tulip, Quantity: 4, Info: Spring flowers
+ID: 333333, Name: Carnations, Quantity: 3, Info: tons of colors
+ID: 444444, Name: Orchid, Quantity: 6, Info: colorful and fragrant
+ID: 555555, Name: Sunflower, Quantity: 7, Info: Tasty seeds
+ID: 999999, Name: Violet, Quantity: 10, Info: They really are purple
+
+Enter the number denoting the action desired
+Add new Inventory Item........1
+List all Inventory Items......2
+Edit an Inventory Item........3
+Exit..........................0
+Enter choice 0
+
+
+Enter the number denoting the action desired
+Customer Menu.................1
+Inventory Menu................2
+Exit..........................0
+Enter choice 0
