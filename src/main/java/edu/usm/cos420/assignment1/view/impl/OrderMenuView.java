@@ -358,10 +358,18 @@ public class OrderMenuView implements MenuView {
 	 * @param fromDate  the begin date for the search
 	 * @param toDate  the end date for the search
 	 */
-	public void noOrdersFound(Customer customer, LocalDate fromDate, LocalDate toDate) {
-		System.out.println("No orders for " + customer + " were found between " + fromDate + " and " + toDate);
+	public void noOrdersFoundInRange(Customer customer, LocalDate fromDate, LocalDate toDate) {
+		System.out.println("No orders for Customer " + customer + " were found between " + fromDate + " and " + toDate);
 	}
 
+	/**
+	 * Report to user that their are no orders for the Customer
+	 * @param customer  the Customer in question
+	 */
+	public void noOrdersFound(Customer customer){
+		System.out.println("No orders for Customer " + customer + " were found");
+	}
+	
 	/**
 	 * Display all orders in a date range for the Customer
 	 * @param customer  the Customer whose orders are being displayed

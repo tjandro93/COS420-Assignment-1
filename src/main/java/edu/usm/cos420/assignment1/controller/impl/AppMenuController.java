@@ -55,6 +55,7 @@ public class AppMenuController implements MenuController {
 			choice = appMenuView.getMainMenuChoice();
 			executeChoice(choice);
 		}
+		System.out.println();
 	}
 
 	/**

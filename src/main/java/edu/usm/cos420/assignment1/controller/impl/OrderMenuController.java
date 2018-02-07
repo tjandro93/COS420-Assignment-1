@@ -31,7 +31,7 @@ public class OrderMenuController implements MenuController {
 	 * and OrderMenuView
 	 */
 	public OrderMenuController() {
-		
+
 		this.customer = null;
 		this.view = new OrderMenuView();
 		this.inventoryRepository = new InventoryRepositoryImpl();
@@ -75,6 +75,7 @@ public class OrderMenuController implements MenuController {
 			choice = view.getMainMenuChoice();
 			executeChoice(choice);
 		}
+		System.out.println();
 	}
 
 	/**
@@ -196,9 +197,9 @@ public class OrderMenuController implements MenuController {
 				validDate = false;
 			}
 		} while(!validDate);
-		
+
 		validDate = false;
-		
+
 		do {
 			if((year = view.getYearInput("upper")) == OrderMenuView.EXIT) {
 				view.abortLookup();
@@ -221,12 +222,12 @@ public class OrderMenuController implements MenuController {
 				validDate = false;
 			}
 		} while(!validDate);
-		
+
 		if(toDate.isBefore(fromDate)) {
 			view.wrongDateOrder(toDate, fromDate);
 			return;
 		}
-		
+
 		List<Order> ordersInRange = new ArrayList<>();
 		for(Order order : customer.getOrders()) {
 			LocalDate currOrderDate = order.getOrderDate();
@@ -238,7 +239,7 @@ public class OrderMenuController implements MenuController {
 			}
 		}
 		if(ordersInRange.isEmpty()) {
-			view.noOrdersFound(customer, fromDate, toDate);
+			view.noOrdersFoundInRange(customer, fromDate, toDate);
 			return;
 		}
 		view.listOrdersInRange(customer, ordersInRange, fromDate, toDate);
@@ -249,7 +250,12 @@ public class OrderMenuController implements MenuController {
 	 */
 	private void listOrders() {
 		List<Order> allOrders = customer.getOrders();
-		view.listOrders(customer, allOrders);
+		if(allOrders.isEmpty()){
+			view.noOrdersFound(customer);
+		}
+		else{
+			view.listOrders(customer, allOrders);
+		}
 	}
 
 	/**

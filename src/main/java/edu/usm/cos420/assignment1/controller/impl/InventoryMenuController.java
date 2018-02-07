@@ -55,7 +55,7 @@ public class InventoryMenuController implements MenuController{
 			choice = view.getMainMenuChoice();
 			executeChoice(choice);
 		}
-
+		System.out.println();
 	}
 
 	/**
