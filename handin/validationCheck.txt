@@ -1,0 +1,121 @@
+
+Enter the number denoting the action desired
+Customer Menu.................1
+Inventory Menu................2
+Exit..........................0
+Enter choice 1
+
+Enter the number denoting the action desired
+Add new Customer..............1
+Look up Customer by ID........2
+Look up Customer by name......3
+List all Customers............4
+Exit..........................0
+Enter choice 2
+
+Enter 6-digit Customer ID or 0 to abort
+888888
+The customer 888888 could not be found
+Enter 6-digit Customer ID or 0 to abort
+222222
+
+
+Customer ID: 222222, Name: Jeff, Address: Saco, ME
+Access customer orders........5
+Edit customer ID .............6
+Edit customer name............7
+Edit customer address.........8
+Exit..........................0
+Enter choice 5
+
+Customer ID: 222222, Name: Jeff, Address: Saco, ME
+Add order.....................1
+List all orders...............2
+Find orders by date...........3
+Exit..........................0
+Enter choice 1
+Enter 6-digit Order ID or 0 to abort
+555555
+Enter an item ID to order or 0 to abort
+200000
+No item with ID 200000 could be found
+Enter an item ID to order or 0 to abort
+222222
+Enter the quantity to order or 0 to abort
+500
+Cannot order 500, only 4 in stock
+Enter the quantity to order or 0 to abort
+4
+Enter an item ID to order or 0 to abort
+0
+Really place order?
+Order ID: 555555 Date: 2018-02-06
+Items:
+	ID: 222222, Name: Tulip, Quantity: 4, Info: Spring flowers
+
+Enter Y to confirm
+y
+
+Customer ID: 222222, Name: Jeff, Address: Saco, ME
+Add order.....................1
+List all orders...............2
+Find orders by date...........3
+Exit..........................0
+Enter choice 3
+Enter the lower bound for year 0 to abort
+13
+Enter the lower bound for month 0 to abort
+15
+15 is not a valid month
+5
+Enter the lower bound for day or 0 to abort
+24
+Enter the upper bound for year 0 to abort
+5000
+Enter the upper bound for month 0 to abort
+3
+Enter the upper bound for day or 0 to abort
+1
+Between 0013-05-24 and 5000-03-01
+For Customer ID: 222222, Name: Jeff, Address: Saco, ME
+Order ID: 555555 Date: 2018-02-06
+Items:
+	ID: 222222, Name: Tulip, Quantity: 4, Info: Spring flowers
+
+
+Customer ID: 222222, Name: Jeff, Address: Saco, ME
+Add order.....................1
+List all orders...............2
+Find orders by date...........3
+Exit..........................0
+Enter choice 8
+8 is not a valid action
+
+Customer ID: 222222, Name: Jeff, Address: Saco, ME
+Add order.....................1
+List all orders...............2
+Find orders by date...........3
+Exit..........................0
+Enter choice list orders
+list orders is not a valid action
+list orders is not a valid action
+Enter choice 0
+
+
+
+Customer ID: 222222, Name: Jeff, Address: Saco, ME
+Access customer orders........5
+Edit customer ID .............6
+Edit customer name............7
+Edit customer address.........8
+Exit..........................0
+Enter choice 0
+Invalid option
+
+Enter the number denoting the action desired
+Add new Customer..............1
+Look up Customer by ID........2
+Look up Customer by name......3
+List all Customers............4
+Exit..........................0
+Enter choice 
