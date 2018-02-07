@@ -11,7 +11,7 @@ import edu.usm.cos420.assignment1.view.impl.AppMenuView;
 public class App
 {
     /**
-     * Entry point for application : calls {@link #provideCItemAccess()}
+     * Entry point for application
      * @param args  main program arguments, currently not used
      */
 	public static void main( String[] args )

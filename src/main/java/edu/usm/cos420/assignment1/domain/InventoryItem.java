@@ -36,10 +36,20 @@ public class InventoryItem implements Serializable{
 		this.quantity = quantity;
 	}
 	
+	/**
+	 * Decrease the items quantity
+	 * @param numSold  the quantity which should be deducted
+	 */
 	public void decrementQuantity(int numSold){
 		this.quantity = this.quantity - numSold;
 	}
 	
+	/**
+	 * Provide a formatted string to represent the item.
+	 * @return a String of the format:
+	 * <p>
+	 * ID: &lt;id&gt;, Name: &lt;name&gt;, Quantity: &lt;quantity&gt;, Info: &lt;description&gt;
+	 */
 	public String toString(){
 		return String.format("ID: %6d, Name: %s, Quantity: %d, Info: %s", 
 				this.id, this.name, this.quantity, this.description);

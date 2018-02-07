@@ -6,8 +6,8 @@ import java.util.List;
 /**
  * Generic Data Access Interface that defines characteristics of basic CRUD operations
  *
- * @param <T> the entity type
- * @param <ID> the primary key type
+ * @param <T>  the entity type
+ * @param <IDType>  the primary key type
  */
 public interface GenericDao<IDType, T extends Serializable> {
 

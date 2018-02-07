@@ -11,7 +11,6 @@ import edu.usm.cos420.assignment1.domain.InventoryItem;
 import edu.usm.cos420.assignment1.domain.Order;
 import edu.usm.cos420.assignment1.service.CustomerRepository;
 import edu.usm.cos420.assignment1.service.InventoryRepository;
-import edu.usm.cos420.assignment1.service.OrderRepository;
 import edu.usm.cos420.assignment1.service.impl.CustomerRepositoryImpl;
 import edu.usm.cos420.assignment1.service.impl.InventoryRepositoryImpl;
 import edu.usm.cos420.assignment1.view.impl.CustomerMenuView;
@@ -79,8 +78,8 @@ public class OrderMenuController implements MenuController {
 	}
 
 	/**
-	 * Based on {@code choice}, do the desired Order action
-	 * @param choice the constant from {@code OrderMenuView} for the desired action
+	 * Based on choice, do the desired Order action
+	 * @param choice the constant from OrderMenuView for the desired action
 	 */
 	@Override
 	public void executeChoice(int choice) {
@@ -167,6 +166,9 @@ public class OrderMenuController implements MenuController {
 		return orderItem;
 	}
 
+	/**
+	 * Display all Orders within a date range
+	 */
 	private void ordersInRange() {
 		int year, month, day;
 		LocalDate fromDate = LocalDate.now(),
@@ -242,6 +244,9 @@ public class OrderMenuController implements MenuController {
 		view.listOrdersInRange(customer, ordersInRange, fromDate, toDate);
 	}
 
+	/**
+	 * List all Orders associated with Customer
+	 */
 	private void listOrders() {
 		List<Order> allOrders = customer.getOrders();
 		view.listOrders(customer, allOrders);

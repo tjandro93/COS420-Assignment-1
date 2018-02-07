@@ -7,7 +7,6 @@ import java.util.List;
 import edu.usm.cos420.assignment1.controller.MenuController;
 import edu.usm.cos420.assignment1.domain.Customer;
 import edu.usm.cos420.assignment1.service.CustomerRepository;
-import edu.usm.cos420.assignment1.service.OrderRepository;
 import edu.usm.cos420.assignment1.service.InventoryRepository;
 import edu.usm.cos420.assignment1.util.Input;
 
@@ -61,8 +60,8 @@ public class CustomerMenuController implements MenuController{
 	}
 
 	/**
-	 * Based on {@code choice}, do the desired Customer action
-	 * @param choice the constant from {@code CustomerMenuView} for the desired action
+	 * Based on choice, do the desired Customer action
+	 * @param choice the constant from CustomerMenuView for the desired action
 	 */
 	@Override
 	public void executeChoice(int choice) {

@@ -3,9 +3,7 @@ package edu.usm.cos420.assignment1.view.impl;
 import java.time.LocalDate;
 import java.util.List;
 
-import edu.usm.cos420.assignment1.domain.InventoryItem;
 import edu.usm.cos420.assignment1.domain.Order;
-import edu.usm.cos420.assignment1.service.OrderRepository;
 import edu.usm.cos420.assignment1.util.Input;
 import edu.usm.cos420.assignment1.view.MenuView;
 import edu.usm.cos420.assignment1.domain.Customer;
@@ -33,13 +31,20 @@ public class OrderMenuView implements MenuView {
 	 */
 	public OrderMenuView(){	}
 	
-	
+	/**
+	 * Get the customer the menu is using
+	 * @return the customer the menu is using
+	 */
 	public Customer getCustomer(){
 		return this.currentCustomer;
 	}
 	
-	public void setCustomer(Customer c){
-		this.currentCustomer = c;
+	/**
+	 * Change the customer the menu is using
+	 * @param customer  the customer to use
+	 */
+	public void setCustomer(Customer customer){
+		this.currentCustomer = customer;
 	}
 	
 	/**
@@ -224,11 +229,21 @@ public class OrderMenuView implements MenuView {
 		return getItemQuantityInput();
 	}
 
+	/**
+	 * Ask user to confirm placing the order
+	 * @param newOrder  the Order to be placed
+	 * @return true if the user wishes to place the order, false otherwise
+	 */
 	public boolean orderConfirm(Order newOrder) {
 		System.out.println("Really place order?\n" + newOrder.toString());
 		return Input.getConfirmation();
 	}
 
+	/**
+	 * Display list of Orders for the Customer
+	 * @param customer  the Customer the Orders belong to
+	 * @param allOrders  the Orders to be displayed
+	 */
 	public void listOrders(Customer customer, List<Order> allOrders) {
 		System.out.println();
 		System.out.println("Orders for Customer " + customer.toString());
@@ -246,6 +261,7 @@ public class OrderMenuView implements MenuView {
 
 	/**
 	 * Prompt and get a year for the order to lookup
+	 * @param bound  detail of which bound for date is being requested
 	 * @return a valid year for an Order, or {@value #EXIT} if the user wants to exit
 	 */
 	public int getYearInput(String bound) {
@@ -261,6 +277,7 @@ public class OrderMenuView implements MenuView {
 
 	/**
 	 * Prompt and get a month for the order to lookup
+	 * @param bound  detail of which bound for date is being requested
 	 * @return a valid month for an Order, or {@value #EXIT} if the user wants to exit
 	 */
 	public int getMonthInput(String bound) {
@@ -273,7 +290,12 @@ public class OrderMenuView implements MenuView {
 		}
 		return month;
 	}
-
+	
+	/**
+	 * Prompt and get a day for the order to lookup
+	 * @param bound  detail of which bound for date is being requested
+	 * @return a valid day for an Order, or {@value #EXIT} if the user wants to exit
+	 */
 	public int getDayInput(String bound) {
 		System.out.println("Enter the " + bound + " bound for day or 0 to abort");
 		int day;
@@ -311,6 +333,12 @@ public class OrderMenuView implements MenuView {
 		}
 	}
 
+	/**
+	 * Report to user that the date supplied is invalid
+	 * @param year  the year supplied
+	 * @param month  the month supplied
+	 * @param day  the day supplied
+	 */
 	public void invalidDate(int year, int month, int day) {
 		System.out.println(year + "-" + month + "-" + day + " is not a valid date");
 	}
@@ -324,10 +352,23 @@ public class OrderMenuView implements MenuView {
 		System.out.println(toDate + " is before " + fromDate+ ". Please try again");
 	}
 
+	/**
+	 * Report to user that their are no orders in the range
+	 * @param customer  the Customer whose orders are being checked
+	 * @param fromDate  the begin date for the search
+	 * @param toDate  the end date for the search
+	 */
 	public void noOrdersFound(Customer customer, LocalDate fromDate, LocalDate toDate) {
 		System.out.println("No orders for " + customer + " were found between " + fromDate + " and " + toDate);
 	}
 
+	/**
+	 * Display all orders in a date range for the Customer
+	 * @param customer  the Customer whose orders are being displayed
+	 * @param ordersInRange  list of Orders to display
+	 * @param fromDate  the begin date for the Orders
+	 * @param toDate  the end date for the Orders
+	 */
 	public void listOrdersInRange(Customer customer, List<Order> ordersInRange, LocalDate fromDate, LocalDate toDate) {
 		System.out.println("Between " + fromDate + " and " + toDate);
 		System.out.println("For Customer " + customer);

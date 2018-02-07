@@ -27,9 +27,9 @@ public class Customer implements Serializable{
 		 * Parameterized constructor
 		 * <p>
 		 * Simply sets the fields of this customer instance
-		 * @param id a 6 digit integer (is not validated by this class)
-		 * @param address the customer's address
-		 * @param name the customer's name
+		 * @param id  a 6 digit integer (is not validated by this class)
+		 * @param address  the customer's address
+		 * @param name  the customer's name
 		 */
 		public Customer(long id, String name, String address) {
 			this.id = id;
@@ -68,7 +68,7 @@ public class Customer implements Serializable{
 
 		/**
 		 * Set the customer's ID
-		 * @param the new ID for the customer
+		 * @param id  the new ID for the customer
 		 */
 		public void setId(int id) {
 			this.id = id;
@@ -76,14 +76,14 @@ public class Customer implements Serializable{
 
 		/**
 		 * Set the customer's address
-		 * @param the new address for the customer
+		 * @param address  the new address for the customer
 		 */
 		public void setAddress(String address) {
 			this.address = address;
 		}
 
 		/** Set the customer's name
-		 * @param the new name for the customer
+		 * @param name  the new name for the customer
 		 */
 		public void setName(String name) {
 			this.name = name;
@@ -99,7 +99,7 @@ public class Customer implements Serializable{
 
 		/**
 		 * Change the list of Orders for the Customer
-		 * @param orders the orders to set
+		 * @param orders  the orders to set
 		 */
 		public void setOrders(List<Order> orders) {
 			this.orders = orders;
@@ -107,7 +107,7 @@ public class Customer implements Serializable{
 		
 		/**
 		 * Add an Order to the Customers Order list
-		 * @param order the Order to add
+		 * @param order  the Order to add
 		 */
 		public void addToOrders(Order order){
 			this.orders.add(order);

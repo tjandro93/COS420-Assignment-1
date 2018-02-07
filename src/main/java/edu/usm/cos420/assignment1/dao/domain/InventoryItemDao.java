@@ -39,7 +39,7 @@ public class InventoryItemDao {
 	
 	/**
 	 * Allows for a GenericDao of the correct type to be specified
-	 * @param dao a Data Access Object that implements GenericDao<Long, InventoryItem>
+	 * @param dao a Data Access Object that implements GenericDao&lt;Long, InventoryItem&gt;
 	 */
 	public InventoryItemDao(GenericDao<Long, InventoryItem> dao){
 		this.inventoryItemDao = dao;
@@ -75,7 +75,7 @@ public class InventoryItemDao {
 	
 	/**
 	 * Find a InventoryItem in the DAO repository
-	 * @param id of the InventoryItem object to locate
+	 * @param key  id of the InventoryItem object to locate
 	 * @return the InventoryItem with id field equal to key
 	 */
 	public InventoryItem find(Long key)

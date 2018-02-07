@@ -7,7 +7,7 @@ import java.time.LocalDate;
 
 
 /**
- * A model class to represent an order made by a customer
+ * A model class to represent an order made by a customer.
  * <p>
  * Contains an id field and a list of Integers of InventoryItem IDs
  */
@@ -21,8 +21,8 @@ public class Order implements Serializable{
 	
 	/**
 	 * Constructor
-	 * @param id the ID of the order
-	 * @param orderItems all InventoryItems to be ordered
+	 * @param id  the ID of the order
+	 * @param orderItems  all InventoryItems to be ordered
 	 */
 	public Order(int id, List<InventoryItem> orderItems){
 		this.id = id;
@@ -31,8 +31,18 @@ public class Order implements Serializable{
 	}
 	
 	/**
+	 * Constructor: initializes orderItems to an empty list and orderDate to the current date
+	 * @param id  the ID of the order
+	 */
+	public Order(int id){
+		this.id = id;
+		this.orderItems = new ArrayList<>();
+		this.orderDate = LocalDate.now();
+	}
+
+	/**
 	 * Change the orderDate to be today
-	 * @return
+	 * @return the new LocalDate for the instant
 	 */
 	public LocalDate resetOrderDate() {
 		this.orderDate = LocalDate.now();
@@ -47,11 +57,6 @@ public class Order implements Serializable{
 		return this.orderDate;
 	}
 	
-	public Order(int id){
-		this.id = id;
-		this.orderItems = new ArrayList<>();
-	}
-
 	/**
 	 * Get the order ID
 	 * @return the id
@@ -62,7 +67,7 @@ public class Order implements Serializable{
 
 	/**
 	 * Set the order ID
-	 * @param id the id to set
+	 * @param id  the id to set
 	 */
 	public void setId(long id) {
 		this.id = id;
@@ -78,7 +83,7 @@ public class Order implements Serializable{
 
 	/**
 	 * Set the orderItems map
-	 * @param orderItems the orderItems to set
+	 * @param orderItems  the orderItems to set
 	 */
 	public void setOrderItems(List<InventoryItem> orderItems) {
 		this.orderItems = orderItems;
@@ -87,12 +92,12 @@ public class Order implements Serializable{
 	/**
 	 * Simple toString to return the Order as a string
 	 * Formated as follows.<p>
-	 * Order ID: /<ID/> <p>
+	 * Order ID: &lt;ID&gt; Date: &lt;date&gt;<p>
 	 * Items:<p>
-	 * /<item1.toString()/><p>
-	 * /<item2.toString()/><p>
-	 * ...<p>
-	 * 
+	 * &lt;item1.toString()&gt;<p>
+	 * &lt;item2.toString()&gt;<p>
+	 * ...
+	 * @return the formatted String
 	 */
 	@Override
 	public String toString(){

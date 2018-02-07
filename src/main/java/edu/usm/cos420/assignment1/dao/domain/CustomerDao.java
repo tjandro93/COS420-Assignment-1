@@ -40,7 +40,7 @@ public class CustomerDao {
 	
 	/**
 	 * Allows for a GenericDao of the correct type to be specified
-	 * @param dao a Data Access Object that implements GenericDao<Long, Customer>
+	 * @param dao a Data Access Object that implements GenericDao&lt;Long, Customer&gt;
 	 */
 	public CustomerDao(GenericDao<Long, Customer> dao){
 		customerDao = dao;
@@ -77,7 +77,7 @@ public class CustomerDao {
 	
 	/**
 	 * Find a Customer in the DAO repository
-	 * @param id of the Customer object to locate
+	 * @param key  ID of the Customer object to locate
 	 * @return the Customer with id field equal to key
 	 */
 	public Customer find(Long key)

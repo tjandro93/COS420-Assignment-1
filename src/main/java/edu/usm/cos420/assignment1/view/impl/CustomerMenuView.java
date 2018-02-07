@@ -206,6 +206,7 @@ public class CustomerMenuView implements MenuView {
 	
 	/**
 	 * Report that a Customer could not be found in the system
+	 * @param message  detail for the Customer who coulnd't be located
 	 */
 	public void customerNotFound(String message) {
 		System.out.println("The customer " + message + " could not be found");
@@ -224,6 +225,7 @@ public class CustomerMenuView implements MenuView {
 	
 	/**
 	 * Display that multiple customers were found on lookup
+	 * @param customers  all Customer instances that were found from search
 	 */
 	public void multipleCustomersFound(List<Customer> customers) {
 		System.out.println(customers.size() + " customers were found with the given name");
@@ -330,6 +332,12 @@ public class CustomerMenuView implements MenuView {
 		
 	}
 
+	/**
+	 * Prompt user to confirm the edit
+	 * @param customer  the original version of the Customer
+	 * @param updatedCustomer  the updated version of the Customer
+	 * @return true if the user wishes to edit, false otherwise
+	 */
 	public boolean confirmEdit(Customer customer, Customer updatedCustomer) {
 		System.out.println(String.format("Really change?\nOriginal: %s\nNew: %s",
 				customer.toString(), updatedCustomer.toString()));

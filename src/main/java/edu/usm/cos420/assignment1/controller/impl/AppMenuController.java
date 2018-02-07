@@ -33,7 +33,7 @@ public class AppMenuController implements MenuController {
 	}
 
 	/**
-	 * Constructor: takes a {@code view.impl.MainMenuView} to provide menu UI
+	 * Constructor: takes a MainMenuView to provide menu UI
 	 * @param mainMenuView view for menu UI
 	 */
 	public AppMenuController(AppMenuView mainMenuView){
@@ -58,8 +58,8 @@ public class AppMenuController implements MenuController {
 	}
 
 	/**
-	 * Based on {@code choice}, go to the desired sub-menu
-	 * @param choice the constant from {@code MainMenuView} for the desired sub-menu
+	 * Based on choice, go to the desired sub-menu
+	 * @param choice  the constant from MainMenuView for the desired sub-menu
 	 */
 	@Override
 	public void executeChoice(int choice){

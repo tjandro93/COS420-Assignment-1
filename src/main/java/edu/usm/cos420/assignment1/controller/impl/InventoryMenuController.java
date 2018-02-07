@@ -18,7 +18,7 @@ public class InventoryMenuController implements MenuController{
 	private InventoryRepository repository;
 
 	/**
-	 * Constructor: initializes a new InventoryMenuView and {@link InventoryRepository}
+	 * Constructor: initializes a new InventoryMenuView and InventoryRepository
 	 */
 	public InventoryMenuController(){
 		this.view = new InventoryMenuView();
@@ -59,8 +59,8 @@ public class InventoryMenuController implements MenuController{
 	}
 
 	/**
-	 * Based on {@code choice}, do the desired Inventory action
-	 * @param choice the constant from {@code InventoryMenuView} for the desired action
+	 * Based on choice, do the desired Inventory action
+	 * @param choice the constant from InventoryMenuView for the desired action
 	 */
 	@Override
 	public void executeChoice(int choice) {

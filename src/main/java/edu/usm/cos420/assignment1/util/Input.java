@@ -5,7 +5,7 @@ import java.util.Scanner;
 /**
  * Utility class to allow for static access to a single Scanner reading from 
  * System.in
- * 
+ * <p>
  * Follows a basic singleton pattern
  * 
  */
@@ -47,6 +47,7 @@ public class Input {
 	
 	/**
 	 * Prompt user for confirmation
+	 * @return true if the user confirmed
 	 */
 	public static boolean getConfirmation(){
 		System.out.println("Enter Y to confirm");

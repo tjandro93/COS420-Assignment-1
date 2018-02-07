@@ -15,7 +15,7 @@ public class InventoryMenuView implements MenuView {
 
 	/** {@value #NO_CHOICE} : no choice selected by user */
 	public static final int NO_CHOICE = -1;
-	/** {@value #ADD_ITEM : add an InventoryItem to the system */
+	/** {@value #ADD_ITEM} : add an InventoryItem to the system */
 	public static final int ADD_ITEM = 1;
 	/** {@value #LIST_ITEMS} : list all InventoryItems in the system */
 	public static final int LIST_ITEMS = 2;
@@ -34,10 +34,17 @@ public class InventoryMenuView implements MenuView {
 
 	private InventoryRepository repository;
 
+	/**
+	 * Default Constructor initializes a new InventoryRepository
+	 */
 	public InventoryMenuView(){
 		this.repository = new InventoryRepositoryImpl();
 	}
 
+	/**
+	 * Constructor, use the provided InventoryRepository
+	 * @param repository  the repository to use for the view
+	 */
 	public InventoryMenuView(InventoryRepository repository){
 		this.repository = repository;
 	}
@@ -248,7 +255,7 @@ public class InventoryMenuView implements MenuView {
 
 	/**
 	 * Display abort message for editing InventoryItems
-	 * @param optional detail message. Set to null for default message
+	 * @param message  optional detail message. Set to null for default message
 	 */
 	public void abortEdit(String message) {
 		if(message == null){
